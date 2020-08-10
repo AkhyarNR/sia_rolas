@@ -14,10 +14,11 @@
           <div class="box">
               <div class="box-header">
                 <div class="row">
+                <form action="" method="post">
                   <div class="col-md-5">
                       <div class="form-group">
                           <label>Mulai Tanggal</label>
-                          <input type="date" class="form-control" name="kode" placeholder="Kode Obat" required>
+                          <input type="date" class="form-control" name="min" placeholder="Kode Obat" value="<?php echo $min ?>" required>
                       </div>  
                       
                   </div>
@@ -25,7 +26,7 @@
                   <div class="col-md-5">
                       <div class="form-group">
                           <label>Sampai Tanggal</label>
-                          <input type="date" class="form-control" name="nama" placeholder="Nama Obat" required>
+                          <input type="date" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
                       </div> 
                       <!-- /.form-group -->
                   </div>
@@ -37,8 +38,8 @@
                       <!-- /.form-group -->
                   </div>
                   <!-- /.col -->
+                </form>
                 </div>
-                <hr>
                 <!-- /.row -->
               </div>
               <!-- /.box-header -->

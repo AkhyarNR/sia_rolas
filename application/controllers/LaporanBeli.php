@@ -16,16 +16,30 @@ class LaporanBeli extends CI_Controller
   {
     // Check if session data(id) is available
     if(isset($_SESSION['id'])){ 
+      $min = $this->input->post('min');
+      $max = $this->input->post('max');
+
       // data for header    
       $header = array(
         'title' => 'Laporan Pembelian',
         'header' => 'Laporan Pembelian',
         'sub_header' => 'List data'
       );
+
+      if($min==NULL && $min==NULL){
       // data for content
-      $data = array(  
-        'dataTable' => $this->Common_model->getData('p.id, p.no_transaksi, p.tgl_pembelian, p.total_qty, p.total_harga, p.bukti_pembelian, p.id_user, u.nama_user','t_pembelian p',['m_user u','u.id = p.id_user'],'',['p.no_transaksi','ASC'])->result_array()
-      );
+        $data = array(  
+          'min' => $this->Common_model->getData('MIN(tgl_pembelian) as tgl_min','t_pembelian','','','')->row()->tgl_min,
+          'max' => $this->Common_model->getData('MAX(tgl_pembelian) as tgl_max','t_pembelian','','','')->row()->tgl_max,
+          'dataTable' => $this->Common_model->getData('p.id, p.no_transaksi, p.tgl_pembelian, p.total_qty, p.total_harga, p.bukti_pembelian, p.id_user, u.nama_user','t_pembelian p',['m_user u','u.id = p.id_user'],'',['p.no_transaksi','ASC'])->result_array()
+        );
+      }else{
+        $data = array(  
+          'min' => $min,
+          'max' => $max,
+          'dataTable' => $this->Common_model->getData('p.id, p.no_transaksi, p.tgl_pembelian, p.total_qty, p.total_harga, p.bukti_pembelian, p.id_user, u.nama_user','t_pembelian p',['m_user u','u.id = p.id_user'],['tgl_pembelian >=' => $min,'tgl_pembelian <=' => $max],['p.no_transaksi','ASC'])->result_array()
+        );
+      }
 
       // data for footer 
       $footer = array(
@@ -46,75 +60,6 @@ class LaporanBeli extends CI_Controller
     }else{
       // redirect to 
       redirect(base_url().'Login'); 
-    }
-  }
-
-  // function for call form add data
-  public function add()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-     
-    }else{
-        redirect(base_url().'Login');
-    }
-  
-  }
-
-  public function insert()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  // function for call form edit data
-  public function edit()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-    
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  // function to doing update data from database
-  public function update()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-      
-      }else{
-          redirect(base_url().'Login');
-      }
-
-  }
-
-  // function to doing delete from database
-  public function delete()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-     
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  public function detail()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-    
-    }else{
-        redirect(base_url().'Login');
     }
   }
 

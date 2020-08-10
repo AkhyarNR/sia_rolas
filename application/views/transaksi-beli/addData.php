@@ -322,13 +322,13 @@
     </<form>
         <script>
             function saveData() {
-        var attr = $("#tangkap").find('tr').length;
-        if(attr==1){
-            alert("Data pembelian tidak boleh kosong!");
-            return false;
-        }
-            else
-            return true;
+                var attr = $("#tangkap").find('tr').length;
+                if(attr==1){
+                    alert("Data pembelian tidak boleh kosong!");
+                    return false;
+                }
+                    else
+                    return true;
         }
         </script>
 </section>

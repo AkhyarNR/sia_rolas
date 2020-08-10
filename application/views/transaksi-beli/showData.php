@@ -55,8 +55,6 @@
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiBeli/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiBeli/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
-                          <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'TransaksiBeli/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus" disabled>
-                          <i class="fa fa-trash fa-lg"></i></button>
                         </td>
                     </tr>
                     <?php
@@ -81,23 +79,6 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
-          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4>Hapus Data Transaksi</h4>
-                      </div>
-                      <div class="modal-body">
-                          Apakah anda yakin akan menghapus data ini?
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-                          <a class="btn btn-danger btn-ok btn-fill">Hapus</a>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          <!-- /.modal delete -->
         </div>
         <!-- /.col -->
       </div>

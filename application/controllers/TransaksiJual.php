@@ -327,11 +327,11 @@ class TransaksiJual extends CI_Controller
       if($cek==$jumlah_detail){
         // set flashdata success
         $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil menghapus data.");
-        redirect(base_url().'MasterUser');
+        redirect(base_url().'TransaksiJual');
       }else{
         // set flashdata error
         $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal menghapus data.");
-        redirect(base_url().'MasterUser');
+        redirect(base_url().'TransaksiJual');
       }
     }else{
         redirect(base_url().'Login');

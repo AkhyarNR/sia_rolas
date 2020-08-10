@@ -9,7 +9,8 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-              <input type="button" class="btn btn-fill btn-default" onclick="printDiv('printableArea')" value="Print" />
+                <button type="button" onclick="goBack();" class="btn btn-default btn-fill">Kembali</button>
+                <input type="button" style="margin-left:5px;" class="btn btn-fill btn-primary" onclick="printDiv('printableArea')" value="Print" />
                 <hr style="margin-bottom:10px">
                 <div id="printableArea">
                 <div class="col-md-12">

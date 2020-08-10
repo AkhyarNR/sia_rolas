@@ -109,7 +109,7 @@
             <div class="box-footer"> 
                 <div class="form-group">
                     <button type="button" onclick="goBack();" class="btn btn-default btn-fill">Kembali</button>
-                    <input type="submit" class="btn btn-primary btn-fill pull-right" value="Simpan">
+                    <input type="submit" onclick="return saveData();" class="btn btn-primary btn-fill pull-right" value="Simpan">
                 </div>
             </div>
             <!-- /.box-footer -->
@@ -412,6 +412,17 @@
         <!-- End Modal -->
     </<form>
     <script>
+
+        function saveData() {
+        var attr = $("#tangkap").find('tr').length;
+        if(attr==1){
+            alert("Data retur tidak boleh kosong!");
+            return false;
+        }
+            else
+            return true;
+        }
+
     function setValueDataEdit() {
             var id_batch = $("#modal_edit_retur #batch_id_edit").val();
             if(id_batch){

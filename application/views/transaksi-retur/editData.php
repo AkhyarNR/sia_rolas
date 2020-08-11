@@ -252,7 +252,6 @@
                                     <select class="form-control select2" style="width: 100%;" id="batch_id" onChange="setValueData();" required>
                                     <option value="" disabled selected>Pilih Batch Obat</option>
                                     </select>
-
                                 </div>
                             </div>  
                             <!-- end form-group -->

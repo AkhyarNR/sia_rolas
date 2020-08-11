@@ -6,7 +6,7 @@
         <?php if(isset($notif_sukses) || isset($notif_gagal)){ ?>
           <div class="alert <?php if(isset($notif_sukses)) echo "alert-success"; else echo "alert-danger"; ?> alert-dismissible fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <?php if(isset($notif_sukses)) echo $notif_sukses; else echo $notif_error; ?>
+            <?php if(isset($notif_sukses)) echo $notif_sukses; else echo $notif_gagal; ?>
           </div>
         </div>
         <?php }?>

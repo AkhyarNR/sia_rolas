@@ -158,9 +158,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>LaporanBeli"><i class="fa fa-circle-o"></i> Laporan Pembelian</a></li>
-            <li><a href="<?php echo base_url()?>LaporanBeli"><i class="fa fa-circle-o"></i> Laporan Penjualan</a></li>
-            <li><a href="<?php echo base_url()?>LaporanBeli"><i class="fa fa-circle-o"></i> Laporan Retur</a></li>
-            <li><a href="<?php echo base_url()?>LaporanBeli"><i class="fa fa-circle-o"></i> Laporan Mutasi</a></li>
+            <li><a href="<?php echo base_url()?>LaporanJual"><i class="fa fa-circle-o"></i> Laporan Penjualan</a></li>
+            <li><a href="<?php echo base_url()?>LaporanRetur"><i class="fa fa-circle-o"></i> Laporan Retur</a></li>
+            <li><a href="<?php echo base_url()?>LaporanMutasi"><i class="fa fa-circle-o"></i> Laporan Mutasi</a></li>
           </ul>
         </li>
       </ul>

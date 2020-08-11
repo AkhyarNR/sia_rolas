@@ -80,8 +80,6 @@
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiBeli/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiBeli/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
-                          <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'TransaksiBeli/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus" disabled>
-                          <i class="fa fa-trash fa-lg"></i></button>
                         </td>
                     </tr>
                     <?php

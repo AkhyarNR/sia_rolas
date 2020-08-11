@@ -36,20 +36,20 @@ $('#modal_edit_retur #update').click(function(){
     // alert('hai')
     var nf = new Intl.NumberFormat();
     var rowid =  $("#modal_edit_retur #row_id_dimodal").val();
-    var obat =  $("#modal_edit_retur #obat_id").val();
-    var text_obat =  $("#modal_edit_retur #obat_id :selected").text();
-    var batch =  $("#modal_edit_retur #batch_id").val();
-    var text_batch =  $("#modal_edit_retur #batch_id :selected").text();
-    var id_supplier =  $("#modal_edit_retur #id_supplier_id").val();
-    var supplier =  $("#modal_edit_retur #supplier_id").val();
-    var tglbeli =  $("#modal_edit_retur #tglbeli_id").val();
-    var exp =  $("#modal_edit_retur #exp_id").val();
-    var qty =  $("#modal_edit_retur #qty_id").val();
-    var harga =  $("#modal_edit_retur #harga_id").val();
+    var obat =  $("#modal_edit_retur #obat_id_edit").val();
+    var text_obat =  $("#modal_edit_retur #obat_id_edit :selected").text();
+    var batch =  $("#modal_edit_retur #batch_id_edit").val();
+    var text_batch =  $("#modal_edit_retur #batch_id_edit :selected").text();
+    var id_supplier =  $("#modal_edit_retur #id_supplier_id_edit").val();
+    var supplier =  $("#modal_edit_retur #supplier_id_edit").val();
+    var tglbeli =  $("#modal_edit_retur #tglbeli_id_edit").val();
+    var exp =  $("#modal_edit_retur #exp_id_edit").val();
+    var qty =  $("#modal_edit_retur #qty_id_edit").val();
+    var harga =  $("#modal_edit_retur #harga_id_edit").val();
     var sub_total = qty * harga;
-    var keterangan =  $("#modal_edit_retur #keterangan_id").val();
-    var batchbaru =  $("#modal_edit_retur #batchbaru_id").val();
-    var expbaru =  $("#modal_edit_retur #expbaru_id").val();
+    var keterangan =  $("#modal_edit_retur #keterangan_id_edit").val();
+    var batchbaru =  $("#modal_edit_retur #batchbaru_id_edit").val();
+    var expbaru =  $("#modal_edit_retur #expbaru_id_edit").val();
 
     // alert(penyebab);
 

@@ -50,12 +50,14 @@
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
                     <th>Bukti Pembelian</th>
-                    <th>User</th>
+                    <th>Nama Obat</th>
+                    <th>Supplier</th>
+                    <th>Batch</th>
+                    <th>Exp Date</th>
+                    <th>Quantity</th>
+                    <th>Harga</th>
                     <th>Opsi</th>
-
                   </tr>
                   </thead>
                   <tbody>
@@ -67,8 +69,6 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo $value['tgl_pembelian'] ?></td>
-                        <td><?php echo number_format($value['total_qty']) ?></td>
-                        <td><?php echo number_format($value['total_harga']) ?></td>
                         <?php
                           if($value['bukti_pembelian']!=NULL)
                             echo "<td><a href='uploads/bukti_beli/".$value['id']."/".$value['bukti_pembelian']."'target='_blank'><button class='btn btn-default btn-sm '><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></a></td>";
@@ -76,7 +76,12 @@
                             echo "<td><button class='btn btn-default btn-sm ' disabled><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></td>";
                           
                         ?>
-                        <td><?php echo $value['nama_user'] ?></td>
+                        <td><?php echo $value['nama_obat'] ?></td>
+                        <td><?php echo $value['nama_supplier'] ?></td>
+                        <td><?php echo $value['batch'] ?></td>
+                        <td><?php echo $value['exp_date'] ?></td>
+                        <td><?php echo number_format($value['qty']) ?></td>
+                        <td><?php echo number_format($value['harga']) ?></td>
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiBeli/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiBeli/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
@@ -92,10 +97,13 @@
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
                     <th>Bukti Pembelian</th>
-                    <th>User</th>
+                    <th>Nama Obat</th>
+                    <th>Supplier</th>
+                    <th>Batch</th>
+                    <th>Exp Date</th>
+                    <th>Quantity</th>
+                    <th>Harga</th>
                     <th>Opsi</th>
                   </tr>
                   </tfoot>

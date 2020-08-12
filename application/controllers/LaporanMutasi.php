@@ -31,13 +31,13 @@ class LaporanMutasi extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_transaksi) as tgl_min','t_mutasi','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_transaksi) as tgl_max','t_mutasi','','','')->row()->tgl_max,
-          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, m.id_supplier, m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user'],'',['m.no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],'',['m.no_transaksi','ASC'])->result_array()
         );
       }else{
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, m.id_supplier, m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user'],['tgl_transaksi >=' => $min,'tgl_transaksi <=' => $max],['m.no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],['tgl_transaksi >=' => $min,'tgl_transaksi <=' => $max],['m.no_transaksi','ASC'])->result_array()
         );
       }
 

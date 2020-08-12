@@ -51,11 +51,11 @@
                     <th>No Transaksi</th>
                     <th>Tanggal Penjualan</th>
                     <th>No Resep</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
-                    <th>User</th>
+                    <th>Nama Obat</th>
+                    <th>Batch</th>
+                    <th>Quantity</th>
+                    <th>Harga</th>
                     <th>Opsi</th>
-
                   </tr>
                   </thead>
                   <tbody>
@@ -67,10 +67,11 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo $value['tgl_penjualan'] ?></td>
-                        <td><?php echo $value['id_resep'] ?></td>
-                        <td><?php echo number_format($value['total_qty']) ?></td>
-                        <td><?php echo number_format($value['total_harga'])?></td>
-                        <td><?php echo $value['nama_user'] ?></td>
+                        <td><?php echo $value['no_resep'] ?></td>
+                        <td><?php echo $value['nama_obat'] ?></td>
+                        <td><?php echo $value['batch'] ?></td>
+                        <td><?php echo number_format($value['qty']) ?></td>
+                        <td><?php echo number_format($value['harga'])?></td>
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiJual/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiJual/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
@@ -85,11 +86,12 @@
                   <tr>
                     <th>No</th>
                     <th>No Transaksi</th>
-                    <th>Tanggal Pembelian</th>
+                    <th>Tanggal Penjualan</th>
                     <th>No Resep</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
-                    <th>User</th>
+                    <th>Nama Obat</th>
+                    <th>Batch</th>
+                    <th>Quantity</th>
+                    <th>Harga</th>
                     <th>Opsi</th>
                   </tr>
                   </tfoot>

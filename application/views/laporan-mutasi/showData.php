@@ -70,8 +70,8 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo $value['tgl_transaksi'] ?></td>
-                        <td><?php echo $value['id_obat'] ?></td>
-                        <td><?php echo $value['id_supplier'] ?></td>
+                        <td><?php echo $value['nama_obat'] ?></td>
+                        <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo $value['jenis'] ?></td>
                         <td><?php echo $value['masuk'] ?></td>

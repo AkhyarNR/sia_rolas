@@ -31,13 +31,13 @@ class LaporanRetur extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_retur) as tgl_min','t_retur','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_retur) as tgl_max','t_retur','','','')->row()->tgl_max,
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, r.total_qty, r.total_harga, r.bukti_retur, r.id_user, u.nama_user','t_retur r',['m_user u','u.id = r.id_user'],'',['r.no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getReturLeft()
         );
       }else{
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, r.total_qty, r.total_harga, r.bukti_retur, r.id_user, u.nama_user','t_retur r',['m_user u','u.id = r.id_user'],['tgl_retur >=' => $min,'tgl_retur <=' => $max],['r.no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getReturLeft()
         );
       }
 

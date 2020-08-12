@@ -55,7 +55,6 @@
                     <th>Batch</th>
                     <th>Quantity</th>
                     <th>Harga</th>
-                    <th>Opsi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -72,10 +71,6 @@
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
                         <td><?php echo number_format($value['harga'])?></td>
-                        <td>
-                          <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiJual/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
-                          <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiJual/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
-                        </td>
                     </tr>
                     <?php
                         $no++;
@@ -92,7 +87,6 @@
                     <th>Batch</th>
                     <th>Quantity</th>
                     <th>Harga</th>
-                    <th>Opsi</th>
                   </tr>
                   </tfoot>
                 </table>

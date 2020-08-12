@@ -58,7 +58,6 @@
                     <th>Keluar</th>
                     <th>Stok</th>
                     <th>User</th>
-                    <th>Opsi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -78,10 +77,6 @@
                         <td><?php echo $value['keluar'] ?></td>
                         <td><?php echo $value['stok'] ?></td>
                         <td><?php echo $value['nama_user'] ?></td>
-                        <td>
-                          <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiJual/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
-                          <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiJual/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
-                        </td>
                     </tr>
                     <?php
                         $no++;
@@ -101,7 +96,6 @@
                     <th>Keluar</th>
                     <th>Stok</th>
                     <th>User</th>
-                    <th>Opsi</th>
                   </tr>
                   </tfoot>
                 </table>

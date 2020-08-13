@@ -11,8 +11,7 @@
         </div>
         <?php }?>
         <div class="col-md-12">
-          <div class="box">
-              <div class="box-header">
+          <div class="box"><div class="box-header">
                 <div class="row">
                 <form action="" method="post">
                   <div class="col-md-3">
@@ -51,6 +50,7 @@
                       </div> 
                       <!-- /.form-group -->
                   </div>
+
                   <!-- /.col -->
                 </form>
                 </div>

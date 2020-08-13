@@ -31,13 +31,13 @@ class LaporanBeli extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_pembelian) as tgl_min','t_pembelian','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_pembelian) as tgl_max','t_pembelian','','','')->row()->tgl_max,
-          'dataTable' => $this->Common_model->getBeliLeft()
+          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, b.bukti_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier'],'', ['no_transaksi','ASC'])->result_array()
         );
       }else{
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getBeliLeft()
+          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, b.bukti_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier'], ['tgl_penjualan >=' => $min, 'tgl_penjualan <=' => $max], ['no_transaksi','ASC'])->result_array()
         );
       }
 

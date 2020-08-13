@@ -136,33 +136,8 @@ class Common_model extends CI_Model {
     $sql = $this->db->join('m_obat o', 'o.id = dob.id_obat');
     $sql = $this->db->join('t_resep r', 'r.id = p.id_resep','left');
     $sql = $this->db->order_by('no_transaksi','ASC');
-    $sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
+    //$sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
     $sql = $this->db->get('t_penjualan p');
-    return $sql->result_array();
-  }
-
-  function getBeliLeft(){
-    $sql = $this->db->select('b.id, b.no_transaksi, b.tgl_pembelian, b.bukti_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga');
-    $sql = $this->db->join('t_detail_pembelian db','b.id = db.id_pembelian');
-    $sql = $this->db->join('m_obat o', 'o.id = db.id_obat');
-    $sql = $this->db->join('m_supplier s', 's.id = db.id_supplier');
-    $sql = $this->db->order_by('no_transaksi','ASC');
-    //$sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
-    $sql = $this->db->get('t_pembelian b');
-    return $sql->result_array();
-  }
-
-
-function getReturLeft(){
-    $sql = $this->db->select('r.id, r.no_transaksi, r.tgl_retur, r.bukti_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru');
-    $sql = $this->db->join('t_detail_retur_masuk drm','r.id = drm.id_retur');
-    $sql = $this->db->join('t_detail_retur_keluar drk', 'r.id = drk.id_retur');
-    $sql = $this->db->join('m_detail_obat dob', 'dob.id = drk.id_detail_obat');
-    $sql = $this->db->join('m_obat o', 'o.id = drm.id_obat');
-    $sql = $this->db->join('m_supplier s', 's.id = drm.id_supplier');
-    $sql = $this->db->order_by('no_transaksi','ASC');
-    //$sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
-    $sql = $this->db->get('t_retur r');
     return $sql->result_array();
   }
 

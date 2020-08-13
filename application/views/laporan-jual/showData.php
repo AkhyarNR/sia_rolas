@@ -130,18 +130,15 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Resep</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="resep" name="resep" required>
-                                    <option value="" disabled selected>Pilih Resep</option>
-                                    <?php foreach($resep as $key => $value){ ?> 
-                                        <!-- foreach -->
-                                    <option value="<?php echo $value['id'];?>"><?php echo $value['no_resep'];?></option>
-                                    <?php } ?>
-                                        <!-- end foreach -->
+                                <select class="form-control select2" style="width: 100%;" id="keterangan_id" required>
+                                <option value="" disabled selected>Pilih Kondisi</option>
+                                    <option value="1">Resep</option>
+                                    <option value="0">Non Resep</option>
                                     </select>
                                 </div>
                             </div>  
                             <!-- end form-group -->
-                        </div>
+                        </div> 
                         <!-- end row -->
 
                         <div class="row" style="margin: 20px;">

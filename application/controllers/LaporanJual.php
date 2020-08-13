@@ -31,9 +31,9 @@ class LaporanJual extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_penjualan) as tgl_min','t_penjualan','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_penjualan) as tgl_max','t_penjualan','','','')->row()->tgl_max,
-          'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
-          'resep' => $this->Common_model->getData('*','t_resep','','','')->result_array(),
-          'user' => $this->Common_model->getData('*','m_user','','','')->result_array(),
+          'obat' => $this->Common_model->getDataDistinct('dob.id_obat as id, o.kode_obat, o.nama_obat','t_detail_penjualan dp',['m_detail_obat dob','dob.id = dp.id_detail_obat','m_obat o','dob.id_obat = o.id',],'','')->result_array(),
+          'resep' => $this->Common_model->getDataDistinct('p.id_resep as id, r.no_resep','t_penjualan p',['t_resep r', 'p.id_resep = r.id'],'','')->result_array(),
+          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_penjualan p',['m_user u','p.id_user = u.id'],'','')->result_array(),
           'dataTable' => $this->Common_model->getJualLeft()
         );
       }else{

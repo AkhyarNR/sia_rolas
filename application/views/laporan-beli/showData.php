@@ -19,7 +19,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example2" class="display responsive nowrap" style="width:100%">
+                <table id="example1" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -78,7 +78,7 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            
+
           <div class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">

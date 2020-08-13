@@ -19,7 +19,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example2" class="display responsive nowrap" style="width:100%">
+                <table id="example1" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>

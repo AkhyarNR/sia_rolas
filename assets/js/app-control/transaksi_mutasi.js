@@ -1,5 +1,5 @@
 $(function () {
-    $('#example2').DataTable({
+    $('#example1').DataTable({
         responsive: true,
         dom: 'Bfrtip',
         buttons: [
@@ -10,7 +10,7 @@ $(function () {
           {
               extend: 'print',
               exportOptions: { 
-                columns: [ 0, 1, 2, 3, 4, 5, 6] 
+                columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
                 },
               customize: function ( win ) {
                   $(win.document.body)
@@ -25,23 +25,10 @@ $(function () {
           {
               extend: 'excelHtml5',
               exportOptions: { 
-                columns: [ 0, 1, 2, 3, 4, 5, 6] 
+                columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
                 }
           }
       ]
   });
-
-    $(document).on('click', '.btn_remove_doc', function(event){
-    event.preventDefault();
-    // alert(event.preventDefault())
-    var result = confirm("Ingin menghapus data dokumen ini?");
-    if (result) {
-        //Logic to delete the item
-        var button_id = $(this).attr("id");
-        $('#row_doc'+button_id+'').remove();
-    }
-    return false;
-
-    });
 
 });

@@ -136,7 +136,7 @@ class Common_model extends CI_Model {
     $sql = $this->db->join('m_obat o', 'o.id = dob.id_obat');
     $sql = $this->db->join('t_resep r', 'r.id = p.id_resep','left');
     $sql = $this->db->order_by('no_transaksi','ASC');
-    //$sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
+    $sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));
     $sql = $this->db->get('t_penjualan p');
     return $sql->result_array();
   }

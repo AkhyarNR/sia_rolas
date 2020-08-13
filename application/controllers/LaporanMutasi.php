@@ -21,8 +21,8 @@ class LaporanMutasi extends CI_Controller
 
       // data for header    
       $header = array(
-        'title' => 'Laporan Penjualan',
-        'header' => 'Laporan Penjualan',
+        'title' => 'Laporan Mutasi',
+        'header' => 'Laporan Mutasi',
         'sub_header' => 'List data'
       );
 

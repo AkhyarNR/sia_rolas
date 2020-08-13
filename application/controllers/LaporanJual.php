@@ -37,7 +37,7 @@ class LaporanJual extends CI_Controller
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getJualLeft($min, $max)
+          'dataTable' => $this->Common_model->getJualLeft()
         );
       }
 

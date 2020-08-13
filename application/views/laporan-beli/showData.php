@@ -15,7 +15,7 @@
               <div class="box-header">
                 <div class="row">
                 <form action="" method="post">
-                  <div class="col-md-5">
+                  <div class="col-md-3">
                       <div class="form-group">
                           <label>Mulai Tanggal</label>
                           <input type="date" class="form-control" name="min" placeholder="Kode Obat" value="<?php echo $min ?>" required>
@@ -23,17 +23,31 @@
                       
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-5">
+                  <div class="col-md-3">
                       <div class="form-group">
                           <label>Sampai Tanggal</label>
                           <input type="date" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
                       </div> 
                       <!-- /.form-group -->
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label>Obat</label>
+                          <input type="text" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
+                      </div> 
+                      <!-- /.form-group -->
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label>Supplier</label>
+                          <input type="text" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
+                      </div> 
+                      <!-- /.form-group -->
+                  </div>
+                  <div class="col-md-1">
                       <div class="form-group">
                           <label>&nbsp;</label>
-                          <button type="submit" class="form-control btn btn-success" name="simpan"><i class="fa fa-search"></i>&nbsp;<strong>CARI</strong></button>
+                          <button type="submit" class="form-control btn btn-success" name="simpan"><i class="fa fa-search"></i></button>
                       </div> 
                       <!-- /.form-group -->
                   </div>

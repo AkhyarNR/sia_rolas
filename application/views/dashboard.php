@@ -72,8 +72,9 @@
             </div>
             <!-- /.box-header -->
               <div class="box-body">
-              <img src="<?= base_url();?>assets/img/rolas-medika-nusantara.jpg" style="margin-left:25%">
-              
+              <!-- <div style="width:250px; padding: 20px;"> -->
+              <img src="<?= base_url();?>assets/img/rolas-medika-nusantara.png" style="display: block;margin-left: auto;margin-right: auto;width: 250px; margin-top: 25px;margin-bottom: 35px">
+              <!-- </div> -->
               <h4><strong>Visi :</strong><h4/> <h5>Menjadi Klinik Pratama Terkemuka di Kabupaten Jember</h5>
               
               <h4><strong>Misi :</strong><h4/>

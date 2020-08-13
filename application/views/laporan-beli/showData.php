@@ -71,6 +71,7 @@
                     <th>Quantity</th>
                     <th>Harga</th>
                     <th>Bukti Pembelian</th>
+                    <th>User</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -94,6 +95,7 @@
                             echo "<td><button class='btn btn-default btn-sm ' disabled><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></td>";
                           
                         ?>
+                        <td><?php echo $value['nama_user'] ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -112,6 +114,7 @@
                     <th>Quantity</th>
                     <th>Harga</th>
                     <th>Bukti Pembelian</th>
+                    <th>User</th>
                   </tr>
                   </tfoot>
                 </table>

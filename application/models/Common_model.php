@@ -130,10 +130,11 @@ class Common_model extends CI_Model {
   }
 
   function getJualLeft(){
-    $sql = $this->db->select('p.id, p.no_transaksi, p.tgl_penjualan, r.no_resep, o.nama_obat, dob.batch, dp.qty, dp.harga');
+    $sql = $this->db->select('p.id, p.no_transaksi, p.tgl_penjualan, r.no_resep, o.nama_obat, dob.batch, dp.qty, dp.harga, u.nama_user');
     $sql = $this->db->join('t_detail_penjualan dp','p.id = dp.id_penjualan');
     $sql = $this->db->join('m_detail_obat dob', 'dob.id = dp.id_detail_obat');
     $sql = $this->db->join('m_obat o', 'o.id = dob.id_obat');
+    $sql = $this->db->join('m_user u', 'u.id = p.id_user');
     $sql = $this->db->join('t_resep r', 'r.id = p.id_resep','left');
     $sql = $this->db->order_by('no_transaksi','ASC');
     //$sql = $this->db->where(array('p.tgl_penjualan >=' => $min, 'p.tgl_penjualan <=' => $max));

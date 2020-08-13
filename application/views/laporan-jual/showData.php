@@ -55,6 +55,7 @@
                     <th>Batch</th>
                     <th>Quantity</th>
                     <th>Harga</th>
+                    <th>User</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -71,6 +72,7 @@
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
                         <td><?php echo number_format($value['harga'])?></td>
+                        <td><?php echo $value['nama_user'] ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -87,6 +89,7 @@
                     <th>Batch</th>
                     <th>Quantity</th>
                     <th>Harga</th>
+                    <th>User</th>
                   </tr>
                   </tfoot>
                 </table>

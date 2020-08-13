@@ -18,6 +18,10 @@ class LaporanMutasi extends CI_Controller
     if(isset($_SESSION['id'])){ 
       $min = $this->input->post('min');
       $max = $this->input->post('max');
+      $obat = $this->input->post('obat');
+      $supplier = $this->input->post('supplier');
+      $user = $this->input->post('user');
+      $jenis = $this->input->post('jenis');
 
       // data for header    
       $header = array(
@@ -26,7 +30,7 @@ class LaporanMutasi extends CI_Controller
         'sub_header' => 'List data'
       );
 
-      if($min==NULL && $min==NULL){
+      if($min==NULL && $max==NULL && $obat==NULL && $supplier==NULL && $user==NULL && $jenis==NULL){
       // data for content
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_transaksi) as tgl_min','t_mutasi','','','')->row()->tgl_min,
@@ -37,11 +41,25 @@ class LaporanMutasi extends CI_Controller
           'jenis' => $this->Common_model->getData('*','t_mutasi','','','')->result_array(),
           'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],'',['m.no_transaksi','ASC'])->result_array()
         );
-      }else{
+      }else if($min!=NULL && $max!=NULL && $obat==NULL && $supplier==NULL && $user==NULL && $jenis==NULL){
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],['tgl_transaksi >=' => $min,'tgl_transaksi <=' => $max],['m.no_transaksi','ASC'])->result_array()
+          'obat' => $this->Common_model->getDataDistinct('m.id_obat as id, o.kode_obat, o.nama_obat','t_mutasi m',['m_obat o','m.id_obat = o.id'],'','')->result_array(),
+          'supplier' => $this->Common_model->getDataDistinct('m.id_supplier as id, s.kode_supplier, s.nama_supplier','t_mutasi m',['m_supplier s','m.id_supplier = s.id'],'','')->result_array(),
+          'user' => $this->Common_model->getDataDistinct('m.id_user as id, u.kode_user, u.nama_user','t_mutasi m',['m_user u','m.id_user = u.id'],'','')->result_array(),
+          'jenis' => $this->Common_model->getData('*','t_mutasi','','','')->result_array(),
+          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],['m.tgl_transaksi >=' => $min,'m.tgl_transaksi <=' => $max],['m.no_transaksi','ASC'])->result_array()
+        );
+      }else if($min!=NULL && $max!=NULL && $obat!=NULL && $supplier==NULL && $user==NULL && $jenis==NULL){
+        $data = array(  
+          'min' => $min,
+          'max' => $max,
+          'obat' => $this->Common_model->getDataDistinct('m.id_obat as id, o.kode_obat, o.nama_obat','t_mutasi m',['m_obat o','m.id_obat = o.id'],'','')->result_array(),
+          'supplier' => $this->Common_model->getDataDistinct('m.id_supplier as id, s.kode_supplier, s.nama_supplier','t_mutasi m',['m_supplier s','m.id_supplier = s.id'],'','')->result_array(),
+          'user' => $this->Common_model->getDataDistinct('m.id_user as id, u.kode_user, u.nama_user','t_mutasi m',['m_user u','m.id_user = u.id'],'','')->result_array(),
+          'jenis' => $this->Common_model->getData('*','t_mutasi','','','')->result_array(),
+          'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],['m.tgl_transaksi >=' => $min,'m.tgl_transaksi <=' => $max, 'm.id_obat' => $obat],['m.no_transaksi','ASC'])->result_array()
         );
       }
 

@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Nama Obat</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="obat_id" name="obat" required>
+                                <select class="form-control select2" style="width: 100%;" id="obat_id" name="obat" >
                                     <option value="" disabled selected>Pilih Obat</option>
                                     <?php foreach($obat as $key => $value){ ?> 
                                         <!-- foreach -->
@@ -133,7 +133,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Supplier</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="supplier_id" name="supplier" required>
+                                <select class="form-control select2" style="width: 100%;" id="supplier_id" name="supplier" >
                                     <option value="" disabled selected>Pilih Supplier</option>
                                     <?php foreach($supplier as $key => $value){ ?> 
                                         <!-- foreach -->
@@ -151,7 +151,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Jenis Mutasi</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="mutasi_id" required>
+                                <select class="form-control select2" style="width: 100%;" id="mutasi_id" >
                                 <option value="" disabled selected>Pilih Mutasi</option>
                                     <option value="SO">Penjualan Intern</option>
                                     <option value="SI">Penjualan Extern</option>
@@ -168,7 +168,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">User</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="user_id" name="user" required>
+                                <select class="form-control select2" style="width: 100%;" id="user_id" name="user" >
                                     <option value="" disabled selected>Pilih User</option>
                                     <?php foreach($user as $key => $value){ ?> 
                                         <!-- foreach -->

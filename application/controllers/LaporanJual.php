@@ -18,6 +18,9 @@ class LaporanJual extends CI_Controller
     if(isset($_SESSION['id'])){ 
       $min = $this->input->post('min');
       $max = $this->input->post('max');
+      $obat = $this->input->post('obat');
+      $resep = $this->input->post('resep');
+      $user = $this->input->post('user');
 
       // data for header    
       $header = array(
@@ -26,7 +29,7 @@ class LaporanJual extends CI_Controller
         'sub_header' => 'List data'
       );
 
-      if($min==NULL && $min==NULL){
+      if($min==NULL && $max==NULL && $obat==NULL && $resep==NULL && $user==NULL){
       // data for content
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_penjualan) as tgl_min','t_penjualan','','','')->row()->tgl_min,
@@ -36,11 +39,23 @@ class LaporanJual extends CI_Controller
           'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_penjualan p',['m_user u','p.id_user = u.id'],'','')->result_array(),
           'dataTable' => $this->Common_model->getJualLeft()
         );
-      }else{
+      }else if($min!=NULL && $max!=NULL && $obat==NULL && $resep==NULL && $user==NULL){
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getJualLeft()
+          'obat' => $this->Common_model->getDataDistinct('dob.id_obat as id, o.kode_obat, o.nama_obat','t_detail_penjualan dp',['m_detail_obat dob','dob.id = dp.id_detail_obat','m_obat o','dob.id_obat = o.id',],'','')->result_array(),
+          'resep' => $this->Common_model->getDataDistinct('p.id_resep as id, r.no_resep','t_penjualan p',['t_resep r', 'p.id_resep = r.id'],'','')->result_array(),
+          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_penjualan p',['m_user u','p.id_user = u.id'],'','')->result_array(),
+          'dataTable' => $this->Common_model->getJualMinMax($min, $max)
+        );
+      }else if($min!=NULL && $max!=NULL && $obat!=NULL && $resep==NULL && $user==NULL){
+        $data = array(  
+          'min' => $min,
+          'max' => $max,
+          'obat' => $this->Common_model->getDataDistinct('dob.id_obat as id, o.kode_obat, o.nama_obat','t_detail_penjualan dp',['m_detail_obat dob','dob.id = dp.id_detail_obat','m_obat o','dob.id_obat = o.id',],'','')->result_array(),
+          'resep' => $this->Common_model->getDataDistinct('p.id_resep as id, r.no_resep','t_penjualan p',['t_resep r', 'p.id_resep = r.id'],'','')->result_array(),
+          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_penjualan p',['m_user u','p.id_user = u.id'],'','')->result_array(),
+          'dataTable' => $this->Common_model->getJualObat($min, $max, $obat)
         );
       }
 

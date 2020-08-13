@@ -14,8 +14,7 @@
           <div class="box">
               <div class="box-header">
                 <h3 class="box-title">
-                  <!-- <a href="<?php echo base_url();?>MasterObat/add" role="button" class="btn btn-success btn-fill pull-left" ><i class='fa fa-sliders'></i> &nbsp;FILTER DATA</a> -->
-                  <button type="button" name="add" id="add" class="btn btn-success"; data-toggle="modal" data-target="#modal_filter"><i class='fa fa-sliders'></i> &nbsp;FILTER DATA</button>
+                <button type="button" name="add" id="add" class="btn btn-success"; data-toggle="modal" data-target="#modal_filter"><i class='fa fa-sliders'></i> &nbsp;FILTER DATA</button>
                 </h3>
               </div>
               <!-- /.box-header -->
@@ -157,7 +156,7 @@
                                 <div class="col-md-7">
                                 <select class="form-control select2" style="width: 100%;" id="supplier_id" name="supplier" required>
                                     <option value="" disabled selected>Pilih Supplier</option>
-                                    <?php foreach($dosis as $key => $value){ ?> 
+                                    <?php foreach($supplier as $key => $value){ ?> 
                                         <!-- foreach -->
                                     <option value="<?php echo $value['id'];?>"><?php echo $value['kode_supplier']." - ". $value['nama_supplier'];?></option>
                                     <?php } ?>

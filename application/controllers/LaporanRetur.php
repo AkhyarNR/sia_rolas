@@ -31,13 +31,17 @@ class LaporanRetur extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_retur) as tgl_min','t_retur','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_retur) as tgl_max','t_retur','','','')->row()->tgl_max,
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, r.bukti_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'],'',['no_transaksi','ASC'])->result_array()
+          'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
+          'supplier' => $this->Common_model->getData('*','m_supplier','','','')->result_array(),
+          'user' => $this->Common_model->getData('*','m_user','','','')->result_array(),
+          'keterangan' => $this->Common_model->getData('*','t_detail_retur_keluar','','','')->result_array(),
+          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'],'',['no_transaksi','ASC'])->result_array()
         );
       }else{
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, r.bukti_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'], ['tgl_penjualan >=' => $min, 'tgl_penjualan <=' => $max],['no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'], ['tgl_penjualan >=' => $min, 'tgl_penjualan <=' => $max],['no_transaksi','ASC'])->result_array()
         );
       }
 

@@ -31,6 +31,9 @@ class LaporanJual extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_penjualan) as tgl_min','t_penjualan','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_penjualan) as tgl_max','t_penjualan','','','')->row()->tgl_max,
+          'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
+          'resep' => $this->Common_model->getData('*','t_resep','','','')->result_array(),
+          'user' => $this->Common_model->getData('*','m_user','','','')->result_array(),
           'dataTable' => $this->Common_model->getJualLeft()
         );
       }else{

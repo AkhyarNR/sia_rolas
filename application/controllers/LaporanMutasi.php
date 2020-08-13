@@ -31,6 +31,10 @@ class LaporanMutasi extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_transaksi) as tgl_min','t_mutasi','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_transaksi) as tgl_max','t_mutasi','','','')->row()->tgl_max,
+          'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
+          'supplier' => $this->Common_model->getData('*','m_supplier','','','')->result_array(),
+          'user' => $this->Common_model->getData('*','m_user','','','')->result_array(),
+          'jenis' => $this->Common_model->getData('*','t_mutasi','','','')->result_array(),
           'dataTable' => $this->Common_model->getData('m.id, m.no_transaksi, m.tgl_transaksi, m.id_obat, o.nama_obat, m.id_supplier, s.nama_supplier , m.batch, m.jenis, m.masuk, m.keluar, m.stok, m.id_user, u.nama_user','t_mutasi m',['m_user u','u.id = m.id_user','m_obat o','o.id = m.id_obat','m_supplier s','s.id = m.id_supplier'],'',['m.no_transaksi','ASC'])->result_array()
         );
       }else{

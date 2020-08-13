@@ -31,7 +31,7 @@
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
-                    <th>Bukti Pembelian</th>
+                    <th>Subtotal</th>
                     <th>User</th>
                   </tr>
                   </thead>
@@ -49,13 +49,8 @@
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo $value['exp_date'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
-                        <td><?php echo number_format($value['harga']) ?></td><?php
-                          if($value['bukti_pembelian']!=NULL)
-                            echo "<td><a href='uploads/bukti_beli/".$value['id']."/".$value['bukti_pembelian']."'target='_blank'><button class='btn btn-default btn-sm '><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></a></td>";
-                          else
-                            echo "<td><button class='btn btn-default btn-sm ' disabled><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></td>";
-                          
-                        ?>
+                        <td><?php echo number_format($value['harga']) ?></td>
+                        <td><?php echo number_format($value['sub_total']) ?></td>
                         <td><?php echo $value['nama_user'] ?></td>
                     </tr>
                     <?php
@@ -74,7 +69,7 @@
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
-                    <th>Bukti Pembelian</th>
+                    <th>Subtotal</th>
                     <th>User</th>
                   </tr>
                   </tfoot>
@@ -83,23 +78,7 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
-          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4>Hapus Data Obat</h4>
-                      </div>
-                      <div class="modal-body">
-                          Apakah anda yakin akan menghapus data ini?
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-                          <a class="btn btn-danger btn-ok btn-fill">Hapus</a>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          <!-- /.modal delete -->
+            
           <div class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
@@ -159,6 +138,24 @@
                                     <?php foreach($supplier as $key => $value){ ?> 
                                         <!-- foreach -->
                                     <option value="<?php echo $value['id'];?>"><?php echo $value['kode_supplier']." - ". $value['nama_supplier'];?></option>
+                                    <?php } ?>
+                                        <!-- end foreach -->
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">User</label>
+                                <div class="col-md-7">
+                                <select class="form-control select2" style="width: 100%;" id="user_id" name="user" required>
+                                    <option value="" disabled selected>Pilih User</option>
+                                    <?php foreach($user as $key => $value){ ?> 
+                                        <!-- foreach -->
+                                    <option value="<?php echo $value['id'];?>"><?php echo $value['kode_user']." - ". $value['nama_user'];?></option>
                                     <?php } ?>
                                         <!-- end foreach -->
                                     </select>

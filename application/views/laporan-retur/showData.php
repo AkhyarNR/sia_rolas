@@ -13,34 +13,9 @@
         <div class="col-md-12">
           <div class="box">
               <div class="box-header">
-                <div class="row">
-                <form action="" method="post">
-                  <div class="col-md-5">
-                      <div class="form-group">
-                          <label>Mulai Tanggal</label>
-                          <input type="date" class="form-control" name="min" placeholder="Kode Obat" value="<?php echo $min ?>" required>
-                      </div>  
-                      
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-md-5">
-                      <div class="form-group">
-                          <label>Sampai Tanggal</label>
-                          <input type="date" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
-                      </div> 
-                      <!-- /.form-group -->
-                  </div>
-                  <div class="col-md-2">
-                      <div class="form-group">
-                          <label>&nbsp;</label>
-                          <button type="submit" class="form-control btn btn-success" name="simpan"><i class="fa fa-search"></i>&nbsp;<strong>CARI</strong></button>
-                      </div> 
-                      <!-- /.form-group -->
-                  </div>
-                  <!-- /.col -->
-                </form>
-                </div>
-                <!-- /.row -->
+                <h3 class="box-title">
+                <button type="button" name="add" id="add" class="btn btn-success"; data-toggle="modal" data-target="#modal_filter"><i class='fa fa-sliders'></i> &nbsp;FILTER DATA</button>
+                </h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -56,10 +31,10 @@
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
+                    <th>Subtotal</th>
                     <th>Keterangan</th>
                     <th>Batch Baru</th>
                     <th>Exp Baru</th>
-                    <th>Bukti Retur</th>
                     <th>User</th>
                   </tr>
                   </thead>
@@ -78,16 +53,10 @@
                         <td><?php echo $value['exp_date'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
                         <td><?php echo number_format($value['harga']) ?></td>
+                        <td><?php echo number_format($value['sub_total']) ?></td>
                         <td><?php echo $value['keterangan'] ?></td>
                         <td><?php echo $value['batch_baru'] ?></td>
                         <td><?php echo $value['exp_date_baru'] ?></td>
-                        <?php
-                          if($value['bukti_retur']!=NULL)
-                            echo "<td><a href='uploads/bukti_retur/".$value['id']."/".$value['bukti_retur']."'target='_blank'><button class='btn btn-default btn-sm '><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></a></td>";
-                          else
-                            echo "<td><button class='btn btn-default btn-sm ' disabled><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></td>";
-                          
-                        ?>
                         <td><?php echo $value['nama_user'] ?></td>
                     </tr>
                     <?php
@@ -106,10 +75,10 @@
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
+                    <th>Subtotal</th>
                     <th>Keterangan</th>
                     <th>Batch Baru</th>
                     <th>Exp Baru</th>
-                    <th>Bukti Retur</th>
                     <th>User</th>
                   </tr>
                   </tfoot>
@@ -118,23 +87,118 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
-          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4>Hapus Data Transaksi</h4>
-                      </div>
-                      <div class="modal-body">
-                          Apakah anda yakin akan menghapus data ini?
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-                          <a class="btn btn-danger btn-ok btn-fill">Hapus</a>
-                      </div>
-                  </div>
-              </div>
+            
+          <div class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <form action="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Set Filter Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="margin:auto; width:80%">
+                        <!-- @include('t_log_problem_analisys._form') -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Mulai Tanggal</label>
+                                <div class="col-md-7">
+                                <input type="date" class="form-control" name="min" value="<?php echo $min ?>" required>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Sampai Tanggal</label>
+                                <div class="col-md-7">
+                                  <input type="date" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nama Obat</label>
+                                <div class="col-md-7">
+                                <select class="form-control select2" style="width: 100%;" id="obat_id" name="obat" required>
+                                    <option value="" disabled selected>Pilih Obat</option>
+                                    <?php foreach($obat as $key => $value){ ?> 
+                                        <!-- foreach -->
+                                    <option value="<?php echo $value['id'];?>"><?php echo $value['kode_obat']." - ". $value['nama_obat'];?></option>
+                                    <?php } ?>
+                                        <!-- end foreach -->
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Supplier</label>
+                                <div class="col-md-7">
+                                <select class="form-control select2" style="width: 100%;" id="supplier_id" name="supplier" required>
+                                    <option value="" disabled selected>Pilih Supplier</option>
+                                    <?php foreach($supplier as $key => $value){ ?> 
+                                        <!-- foreach -->
+                                    <option value="<?php echo $value['id'];?>"><?php echo $value['kode_supplier']." - ". $value['nama_supplier'];?></option>
+                                    <?php } ?>
+                                        <!-- end foreach -->
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Keterangan</label>
+                                <div class="col-md-7">
+                                <select class="form-control select2" style="width: 100%;" id="keterangan_id" required>
+                                <option value="" disabled selected>Pilih Kondisi</option>
+                                    <option value="RUSAK">Obat Rusak</option>
+                                    <option value="EXP">Obat Kadaluarsa</option>
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">User</label>
+                                <div class="col-md-7">
+                                <select class="form-control select2" style="width: 100%;" id="user_id" name="user" required>
+                                    <option value="" disabled selected>Pilih User</option>
+                                    <?php foreach($user as $key => $value){ ?> 
+                                        <!-- foreach -->
+                                    <option value="<?php echo $value['id'];?>"><?php echo $value['kode_user']." - ". $value['nama_user'];?></option>
+                                    <?php } ?>
+                                        <!-- end foreach -->
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div>
+                        <!-- end row -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary" id="simpan">Cari</button>
+                    </div>
+                    </form>
+                </div>
             </div>
-          <!-- /.modal delete -->
+        </div>
+                <!-- End Modal -->
         </div>
         <!-- /.col -->
       </div>

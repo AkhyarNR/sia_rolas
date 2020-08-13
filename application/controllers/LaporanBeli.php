@@ -31,15 +31,16 @@ class LaporanBeli extends CI_Controller
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_pembelian) as tgl_min','t_pembelian','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_pembelian) as tgl_max','t_pembelian','','','')->row()->tgl_max,
-          'obat' => $this->Common_model->getData('*','m_obat','','','')->result_array(),
+          'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
           'supplier' => $this->Common_model->getData('*','m_supplier','','','')->result_array(),
-          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, b.bukti_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'],'', ['no_transaksi','ASC'])->result_array()
+          'user' => $this->Common_model->getData('*','m_user','','','')->result_array(),
+          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'],'', ['no_transaksi','ASC'])->result_array()
         );
       }else{
         $data = array(  
           'min' => $min,
           'max' => $max,
-          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, b.bukti_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'], ['tgl_penjualan >=' => $min, 'tgl_penjualan <=' => $max], ['no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'], ['tgl_penjualan >=' => $min, 'tgl_penjualan <=' => $max], ['no_transaksi','ASC'])->result_array()
         );
       }
 

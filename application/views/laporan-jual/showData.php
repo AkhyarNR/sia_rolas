@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Sampai Tanggal</label>
                                 <div class="col-md-7">
-                                  <input type="date" class="form-control" name="max" placeholder="Nama Obat" value="<?php echo $max ?>" required>
+                                  <input type="date" class="form-control" name="max" value="<?php echo $max ?>" required>
                                 </div>
                             </div>  
                             <!-- end form-group -->

@@ -130,10 +130,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Resep</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="resep_id">
+                                <select class="form-control select2" style="width: 100%;" id="resep_id" name="resep">
                                 <option value="" disabled selected>Pilih Kondisi</option>
                                     <option value="1">Resep</option>
-                                    <option value="0">Non Resep</option>
+                                    <option value=null>Non Resep</option>
                                     </select>
                                 </div>
                             </div>  

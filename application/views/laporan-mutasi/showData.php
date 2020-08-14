@@ -151,10 +151,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Jenis Mutasi</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="mutasi_id" >
+                                <select class="form-control select2" style="width: 100%;" id="mutasi_id" name="jenis">
                                 <option value="" disabled selected>Pilih Mutasi</option>
-                                    <option value="SO">Penjualan Intern</option>
-                                    <option value="SI">Penjualan Extern</option>
+                                    <option value="SO">Penjualan Internal</option>
+                                    <option value="SI">Penjualan Eksternal</option>
                                     <option value="BY">Pembelian</option>
                                     <option value="RT">Retur</option>
                                     </select>

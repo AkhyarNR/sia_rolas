@@ -29,9 +29,29 @@ class LaporanRetur extends CI_Controller
         'header' => 'Laporan Retur',
         'sub_header' => 'List data'
       );
+      $filter = array();
 
-      if($min==NULL && $max==NULL && $obat==NULL && $supplier==NULL  && $keterangan==NULL&& $user==NULL){
-      // data for content
+      if($min!=NULL && $max!=NULL){
+        $filter['r.tgl_retur >='] = $min;
+        $filter['r.tgl_retur <='] = $max;
+      }
+
+      if($obat!=NULL){
+        $filter['dob.id_obat'] = $obat;
+      }
+
+      if($supplier!=NULL){
+        $filter['drm.id_supplier'] = $supplier;
+      }
+
+      if($keterangan!=NULL){
+        $filter['drk.keterangan'] = $keterangan;
+      }
+
+      if($user!=NULL){
+        $filter['r.id_user'] = $user;
+      }
+
         $data = array(  
           'min' => $this->Common_model->getData('MIN(tgl_retur) as tgl_min','t_retur','','','')->row()->tgl_min,
           'max' => $this->Common_model->getData('MAX(tgl_retur) as tgl_max','t_retur','','','')->row()->tgl_max,
@@ -39,29 +59,8 @@ class LaporanRetur extends CI_Controller
           'supplier' => $this->Common_model->getDataDistinct('drm.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_retur_masuk drm',['m_supplier s','drm.id_supplier = s.id'],'','')->result_array(),
           'user' => $this->Common_model->getDataDistinct('r.id_user as id, u.kode_user, u.nama_user','t_retur r',['m_user u','r.id_user = u.id'],'','')->result_array(),
           'keterangan' => $this->Common_model->getData('*','t_detail_retur_keluar','','','')->result_array(),
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'],'',['no_transaksi','ASC'])->result_array()
+          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'],$filter,['no_transaksi','ASC'])->result_array()
         );
-      }else if($min!=NULL && $max!=NULL && $obat==NULL && $supplier==NULL && $keterangan==NULL&& $user==NULL ){
-        $data = array(  
-          'min' => $min,
-          'max' => $max,
-          'obat' => $this->Common_model->getDataDistinct('dob.id_obat as id, o.kode_obat, o.nama_obat','t_detail_retur_keluar drk',['m_detail_obat dob','dob.id = drk.id_detail_obat','m_obat o','dob.id_obat = o.id'],'','')->result_array(),
-          'supplier' => $this->Common_model->getDataDistinct('drm.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_retur_masuk drm',['m_supplier s','drm.id_supplier = s.id'],'','')->result_array(),
-          'user' => $this->Common_model->getDataDistinct('r.id_user as id, u.kode_user, u.nama_user','t_retur r',['m_user u','r.id_user = u.id'],'','')->result_array(),
-          'keterangan' => $this->Common_model->getData('*','t_detail_retur_keluar','','','')->result_array(),
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'], ['r.tgl_retur >=' => $min, 'r.tgl_retur <=' => $max],['r.no_transaksi','ASC'])->result_array()
-        );
-      }else if($min!=NULL && $max!=NULL && $obat!=NULL && $supplier==NULL && $keterangan==NULL && $user==NULL){
-        $data = array(  
-          'min' => $min,
-          'max' => $max,
-          'obat' => $this->Common_model->getDataDistinct('dob.id_obat as id, o.kode_obat, o.nama_obat','t_detail_retur_keluar drk',['m_detail_obat dob','dob.id = drk.id_detail_obat','m_obat o','dob.id_obat = o.id'],'','')->result_array(),
-          'supplier' => $this->Common_model->getDataDistinct('drm.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_retur_masuk drm',['m_supplier s','drm.id_supplier = s.id'],'','')->result_array(),
-          'user' => $this->Common_model->getDataDistinct('r.id_user as id, u.kode_user, u.nama_user','t_retur r',['m_user u','r.id_user = u.id'],'','')->result_array(),
-          'keterangan' => $this->Common_model->getData('*','t_detail_retur_keluar','','','')->result_array(),
-          'dataTable' => $this->Common_model->getData('r.id, r.no_transaksi, r.tgl_retur, o.nama_obat, s.nama_supplier, dob.batch, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru, drm.sub_total, u.nama_user','t_retur r', ['t_detail_retur_masuk drm','r.id = drm.id_retur', 't_detail_retur_keluar drk', 'r.id = drk.id_retur', 'm_detail_obat dob', 'dob.id = drk.id_detail_obat', 'm_obat o', 'o.id = drm.id_obat', 'm_supplier s', 's.id = drm.id_supplier', 'm_user u', 'u.id = r.id_user'], ['r.tgl_retur >=' => $min, 'r.tgl_retur <=' => $max, 'drm.id_obat' => $obat],['r.no_transaksi','ASC'])->result_array()
-        );
-      }
 
       // data for footer 
       $footer = array(

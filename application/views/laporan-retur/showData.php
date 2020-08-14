@@ -160,7 +160,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Keterangan</label>
                                 <div class="col-md-7">
-                                <select class="form-control select2" style="width: 100%;" id="keterangan_id" >
+                                <select class="form-control select2" style="width: 100%;" id="keterangan_id" name= "keterangan">
                                 <option value="" disabled selected>Pilih Kondisi</option>
                                     <option value="RUSAK">Obat Rusak</option>
                                     <option value="EXP">Obat Kadaluarsa</option>

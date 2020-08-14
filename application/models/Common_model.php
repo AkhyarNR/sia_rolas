@@ -179,7 +179,7 @@ class Common_model extends CI_Model {
     return $sql->result_array();
   }
 
-  function getJualLeft(){
+  function getJualLeft($filter){
     $sql = $this->db->select('j.id, j.no_transaksi, j.tgl_penjualan, r.no_resep, o.nama_obat, dob.batch, dp.qty, dp.harga, dp.sub_total, u.nama_user');
     $sql = $this->db->join('t_detail_penjualan dp','j.id = dp.id_penjualan');
     $sql = $this->db->join('m_detail_obat dob', 'dob.id = dp.id_detail_obat');
@@ -187,32 +187,7 @@ class Common_model extends CI_Model {
     $sql = $this->db->join('m_user u', 'u.id = j.id_user');
     $sql = $this->db->join('t_resep r', 'r.id = j.id_resep','left');
     $sql = $this->db->order_by('no_transaksi','ASC');
-    $sql = $this->db->get('t_penjualan j');
-    return $sql->result_array();
-  }
-
-  function getJualMinMax($min, $max){
-    $sql = $this->db->select('j.id, j.no_transaksi, j.tgl_penjualan, r.no_resep, o.nama_obat, dob.batch, dp.qty, dp.harga, dp.sub_total, u.nama_user');
-    $sql = $this->db->join('t_detail_penjualan dp','j.id = dp.id_penjualan');
-    $sql = $this->db->join('m_detail_obat dob', 'dob.id = dp.id_detail_obat');
-    $sql = $this->db->join('m_obat o', 'o.id = dob.id_obat');
-    $sql = $this->db->join('m_user u', 'u.id = j.id_user');
-    $sql = $this->db->join('t_resep r', 'r.id = j.id_resep','left');
-    $sql = $this->db->order_by('no_transaksi','ASC');
-    $sql = $this->db->where(array('j.tgl_penjualan >=' => $min, 'j.tgl_penjualan <=' => $max));
-    $sql = $this->db->get('t_penjualan j');
-    return $sql->result_array();
-  }
-
-  function getJualObat($min, $max, $obat){
-    $sql = $this->db->select('j.id, j.no_transaksi, j.tgl_penjualan, r.no_resep, o.nama_obat, dob.batch, dp.qty, dp.harga, dp.sub_total, u.nama_user');
-    $sql = $this->db->join('t_detail_penjualan dp','j.id = dp.id_penjualan');
-    $sql = $this->db->join('m_detail_obat dob', 'dob.id = dp.id_detail_obat');
-    $sql = $this->db->join('m_obat o', 'o.id = dob.id_obat');
-    $sql = $this->db->join('m_user u', 'u.id = j.id_user');
-    $sql = $this->db->join('t_resep r', 'r.id = j.id_resep','left');
-    $sql = $this->db->order_by('no_transaksi','ASC');
-    $sql = $this->db->where(array('j.tgl_penjualan >=' => $min, 'j.tgl_penjualan <=' => $max, 'dob.id_obat' => $obat)); 
+    $sql = $this->db->where($filter);
     $sql = $this->db->get('t_penjualan j');
     return $sql->result_array();
   }

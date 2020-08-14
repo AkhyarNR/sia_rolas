@@ -41,7 +41,10 @@ class LaporanJual extends CI_Controller
       }
 
       if($resep!=NULL){
-        $filter['r.no_resep'] = $resep;
+        if($resep==1)
+          $filter['r.no_resep !='] = NULL;
+        else
+          $filter['r.no_resep'] = NULL;
       }
 
       if($user!=NULL){

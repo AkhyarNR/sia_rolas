@@ -18,13 +18,13 @@ class ObatTersedia extends CI_Controller
     if(isset($_SESSION['id'])){ 
       // data for header    
       $header = array(
-        'title' => 'Laporan Pembelian',
-        'header' => 'Laporan Pembelian',
+        'title' => 'Obat Tersedia',
+        'header' => 'Obat Tersedia',
         'sub_header' => 'List data'
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('p.id, p.no_transaksi, p.tgl_pembelian, p.total_qty, p.total_harga, p.bukti_pembelian, p.id_user, u.nama_user','t_pembelian p',['m_user u','u.id = p.id_user'],'',['p.no_transaksi','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('o.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, dob.harga_beli, dob.qty, o.harga_jual','m_detail_obat dob',['m_obat o','dob.id_obat = o.id','m_supplier s','dob.id_supplier = s.id'],['dob.qty !=' => 0],['dob.tgl_pembelian','ASC'])->result_array()
       );
 
       // data for footer 
@@ -46,75 +46,6 @@ class ObatTersedia extends CI_Controller
     }else{
       // redirect to 
       redirect(base_url().'Login'); 
-    }
-  }
-
-  // function for call form add data
-  public function add()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-     
-    }else{
-        redirect(base_url().'Login');
-    }
-  
-  }
-
-  public function insert()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  // function for call form edit data
-  public function edit()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-    
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  // function to doing update data from database
-  public function update()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-      
-      }else{
-          redirect(base_url().'Login');
-      }
-
-  }
-
-  // function to doing delete from database
-  public function delete()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-     
-    }else{
-        redirect(base_url().'Login');
-    }
-
-  }
-
-  public function detail()
-  {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-    
-    }else{
-        redirect(base_url().'Login');
     }
   }
 

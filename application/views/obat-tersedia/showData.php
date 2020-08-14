@@ -18,13 +18,15 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>No Transaksi</th>
+                    <th>Kode Obat</th>
+                    <th>Nama Obat</th>
+                    <th>Nama Supplier</th>
+                    <th>Batch</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
-                    <th>Bukti Pembelian</th>
-                    <th>User</th>
-                    <th>Opsi</th>
+                    <th>Tanggal Kadaluarsa</th>
+                    <th>Harga Beli</th>
+                    <th>Qty</th>
+                    <th>Harga Jual</th>
 
                   </tr>
                   </thead>
@@ -35,24 +37,15 @@
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $value['no_transaksi'] ?></td>
-                        <td><?php echo $value['tgl_pembelian'] ?></td>
-                        <td><?php echo number_format($value['total_qty']) ?></td>
-                        <td><?php echo number_format($value['total_harga']) ?></td>
-                        <?php
-                          if($value['bukti_pembelian']!=NULL)
-                            echo "<td><a href='uploads/bukti_beli/".$value['id']."/".$value['bukti_pembelian']."'target='_blank'><button class='btn btn-default btn-sm '><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></a></td>";
-                          else
-                            echo "<td><button class='btn btn-default btn-sm ' disabled><i class='fa fa-file-image-o' ></i>   Bukti Transaksi</button></td>";
-                          
-                        ?>
-                        <td><?php echo $value['nama_user'] ?></td>
-                        <td>
-                          <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiBeli/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
-                          <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiBeli/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
-                          <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'TransaksiBeli/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus" disabled>
-                          <i class="fa fa-trash fa-lg"></i></button>
-                        </td>
+                        <td><?php echo $value['kode_obat'] ?></td>
+                        <td><?php echo $value['nama_obat'] ?></td>
+                        <td><?php echo $value['nama_supplier'] ?></td>
+                        <td><?php echo $value['batch'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_pembelian']),'d-m-Y') ?></td>
+                        <td><?php echo $value['exp_date'] ?></td>
+                        <td><?php echo number_format($value['harga_beli']) ?></td>
+                        <td><?php echo number_format($value['qty']) ?></td>
+                        <td><?php echo number_format($value['harga_jual']) ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -62,13 +55,15 @@
                   <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>No Transaksi</th>
+                    <th>Kode Obat</th>
+                    <th>Nama Obat</th>
+                    <th>Nama Supplier</th>
+                    <th>Batch</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Total Quantity</th>
-                    <th>Total Harga</th>
-                    <th>Bukti Pembelian</th>
-                    <th>User</th>
-                    <th>Opsi</th>
+                    <th>Tanggal Kadaluarsa</th>
+                    <th>Harga Beli</th>
+                    <th>Qty</th>
+                    <th>Harga Jual</th>
                   </tr>
                   </tfoot>
                 </table>

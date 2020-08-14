@@ -43,12 +43,13 @@ class Login extends CI_Controller
         $cekLoginUp = $this->Common_model->getData("*","m_user","",$where,"")->row();
         if($cekLoginUp){
         
-        $dataUser = $this->Common_model->getData('u.id, u.kode_user, u.nama_user, u.username, j.nama_jabatan','m_user u',['m_jabatan j','u.id_jabatan = j.id'],$where,['u.kode_user','ASC'])->result_array();
+        $dataUser = $this->Common_model->getData('u.id, u.kode_user, u.nama_user, u.username, u.id_jabatan, j.nama_jabatan','m_user u',['m_jabatan j','u.id_jabatan = j.id'],$where,['u.kode_user','ASC'])->result_array();
         
         $dataSession = array(
           'id' => $dataUser[0]['id'],
           'nama' => $dataUser[0]['nama_user'],
           'username' => $dataUser[0]['username'],
+          'id_jabatan' => $dataUser[0]['id_jabatan'],
           'jabatan' => $dataUser[0]['nama_jabatan']
         );
 

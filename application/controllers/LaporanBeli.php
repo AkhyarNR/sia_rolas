@@ -29,36 +29,34 @@ class LaporanBeli extends CI_Controller
         'sub_header' => 'List data'
       );
 
-      if($min==NULL && $max==NULL && $obat==NULL && $supplier==NULL && $user==NULL){
-      // data for content
-        $data = array(  
-          'min' => $this->Common_model->getData('MIN(tgl_pembelian) as tgl_min','t_pembelian','','','')->row()->tgl_min,
-          'max' => $this->Common_model->getData('MAX(tgl_pembelian) as tgl_max','t_pembelian','','','')->row()->tgl_max,
-          'obat' => $this->Common_model->getDataDistinct('dp.id_obat as id, o.kode_obat, o.nama_obat','t_detail_pembelian dp',['m_obat o','dp.id_obat = o.id'],'','')->result_array(),
-          'supplier' => $this->Common_model->getDataDistinct('dp.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_pembelian dp',['m_supplier s','dp.id_supplier = s.id'],'','')->result_array(),
-          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_pembelian p',['m_user u','p.id_user = u.id'],'','')->result_array(),
-          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'],'', ['no_transaksi','ASC'])->result_array()
-        );
-      }else if($min!=NULL && $max!=NULL && $obat==NULL && $supplier==NULL && $user==NULL){
-        $data = array(  
-          'min' => $min,
-          'max' => $max,
-          'obat' => $this->Common_model->getDataDistinct('dp.id_obat as id, o.kode_obat, o.nama_obat','t_detail_pembelian dp',['m_obat o','dp.id_obat = o.id'],'','')->result_array(),
-          'supplier' => $this->Common_model->getDataDistinct('dp.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_pembelian dp',['m_supplier s','dp.id_supplier = s.id'],'','')->result_array(),
-          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_pembelian p',['m_user u','p.id_user = u.id'],'','')->result_array(),
-          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'], ['b.tgl_pembelian >=' => $min, 'b.tgl_pembelian <=' => $max], ['b.no_transaksi','ASC'])->result_array()
-        );
-      }else if($min!=NULL && $max!=NULL && $obat!=NULL && $supplier==NULL && $user==NULL){
-        $data = array(  
-          'min' => $min,
-          'max' => $max,
-          'obat' => $this->Common_model->getDataDistinct('dp.id_obat as id, o.kode_obat, o.nama_obat','t_detail_pembelian dp',['m_obat o','dp.id_obat = o.id'],'','')->result_array(),
-          'supplier' => $this->Common_model->getDataDistinct('dp.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_pembelian dp',['m_supplier s','dp.id_supplier = s.id'],'','')->result_array(),
-          'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_pembelian p',['m_user u','p.id_user = u.id'],'','')->result_array(),
-          'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'], ['b.tgl_pembelian >=' => $min, 'b.tgl_pembelian <=' => $max, 'db.id_obat' => $obat], ['no_transaksi','ASC'])->result_array()
-        );
+      $filter = array();
+
+      if($min!=NULL && $max!=NULL){
+        $filter['b.tgl_pembelian >='] = $min;
+        $filter['b.tgl_pembelian <='] = $max;
       }
 
+      if($obat!=NULL){
+        $filter['db.id_obat'] = $obat;
+      }
+
+      if($supplier!=NULL){
+        $filter['db.id_supplier'] = $supplier;
+      }
+
+      if($user!=NULL){
+        $filter['b.id_user'] = $user;
+      }
+
+      $data = array(  
+        'min' => $this->Common_model->getData('MIN(tgl_pembelian) as tgl_min','t_pembelian','','','')->row()->tgl_min,
+        'max' => $this->Common_model->getData('MAX(tgl_pembelian) as tgl_max','t_pembelian','','','')->row()->tgl_max,
+        'obat' => $this->Common_model->getDataDistinct('dp.id_obat as id, o.kode_obat, o.nama_obat','t_detail_pembelian dp',['m_obat o','dp.id_obat = o.id'],'','')->result_array(),
+        'supplier' => $this->Common_model->getDataDistinct('dp.id_supplier as id, s.kode_supplier, s.nama_supplier','t_detail_pembelian dp',['m_supplier s','dp.id_supplier = s.id'],'','')->result_array(),
+        'user' => $this->Common_model->getDataDistinct('p.id_user as id, u.kode_user, u.nama_user','t_pembelian p',['m_user u','p.id_user = u.id'],'','')->result_array(),
+        'dataTable' => $this->Common_model->getData('b.id, b.no_transaksi, b.tgl_pembelian, o.nama_obat, s.nama_supplier, db.batch, db.exp_date, db.qty, db.harga, db.sub_total, u.nama_user','t_pembelian b',['t_detail_pembelian db','b.id = db.id_pembelian', 'm_obat o', 'o.id = db.id_obat', 'm_supplier s', 's.id = db.id_supplier','m_user u','u.id = b.id_user'],$filter, ['no_transaksi','ASC'])->result_array()
+      );
+    
       // data for footer 
       $footer = array(
         'control' => 'transaksi_beli.js',

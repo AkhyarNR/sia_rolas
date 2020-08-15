@@ -13,6 +13,9 @@
         <div class="col-md-12">
           <div class="box">
               <div class="box-header">
+                <h3 class="box-title">
+                  <button type="button" onclick="goBack();" class="btn btn-success">Kembali</button>
+                </h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -27,7 +30,6 @@
                     <th>Exp Date</th>
                     <th>Harga Beli</th>
                     <th>Quantity</th>
-                    <th>Opsi</th>
 
                   </tr>
                   </thead>
@@ -45,11 +47,6 @@
                         <td><?php echo $value['exp_date'] ?></td>
                         <td><?php echo $value['harga_beli'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
-                        <td>
-                          <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'MasterObat/edit/'.$value['id'];?>"><i class="fa fa-edit" ></i></a>
-                          <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'MasterObat/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus">
-                          <i class="fa fa-trash fa-lg"></i></button>
-                        </td>
                     </tr>
                     <?php
                         $no++;
@@ -66,7 +63,6 @@
                     <th>Exp Date</th>
                     <th>Harga Beli</th>
                     <th>Quantity</th>
-                    <th>Opsi</th>
                   </tr>
                   </tfoot>
                 </table>

@@ -66,11 +66,11 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
+                <!-- <div class="pull-left">
                   <a href="#" class="btn btn-basic btn-flat">Ubah Password</a>
-                </div>
+                </div> -->
                 <div class="pull-right">
-                  <a href="<?php echo base_url() ?>" class="btn btn-default btn-flat">Profil</a>
+                  <a href="<?php echo base_url() ?>" class="btn btn-default btn-flat">Ubah Password</a>
                 </div>
               </li>
             </ul>

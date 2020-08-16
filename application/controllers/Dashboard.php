@@ -19,8 +19,15 @@ class Dashboard extends CI_Controller
       'title' => 'Dashboard',
       'header' => 'Dashboard',
     );
+
+    $data = array(  
+      'tersedia' => $this->Common_model->getData('*','m_obat','',['total_qty >' => 0],'')->num_rows(),
+      'hampir_habis' => $this->Common_model->getData('*','m_obat','',['total_qty >' => 0,'total_qty <=' => 150],'')->num_rows(),
+      'kosong' => $this->Common_model->getData('*','m_obat','',['total_qty' => 0],'')->num_rows()
+    );
+
     $this->load->view('common/header',$header);
-    $this->load->view('dashboard');
+    $this->load->view('dashboard',$data);
     $this->load->view('common/footer');
       
     }else{

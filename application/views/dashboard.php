@@ -7,7 +7,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Obat Tersedia</span><br>
-              <span class="info-box-number"><a href="<?php echo base_url()?>ObatTersedia"><u>141,410</u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatTersedia"><u><?php echo $tersedia ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
               
             </div>
             <!-- /.info-box-content -->
@@ -25,7 +25,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Obat Hampir Habis</span><br>
-              <span class="info-box-number"><a href="<?php echo base_url()?>ObatHampirHabis"><u>11,420</u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatHampirHabis"><u><?php echo $hampir_habis ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -38,7 +38,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Obat Kosong</span><br>
-              <span class="info-box-number"><a href="<?php echo base_url()?>ObatKosong"><u>0</u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatKosong"><u><?php echo $kosong ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -52,7 +52,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Obat Hampir <br>Kadaluarsa</span>
-              <span class="info-box-number"><a href="#"><u>1,410</u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatHampirExp"><u>1,410</u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
             </div>
             <!-- /.info-box-content -->
           </div>

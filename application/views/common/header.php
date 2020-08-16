@@ -145,8 +145,8 @@
             <li><a href="<?php echo base_url()?>ObatTersedia"><i class="fa fa-circle-o"></i> Tersedia</a></li>
             <li><a href="<?php echo base_url()?>ObatHampirHabis"><i class="fa fa-circle-o"></i> Hampir Habis</a></li>
             <li><a href="<?php echo base_url()?>ObatKosong"><i class="fa fa-circle-o"></i> Kosong</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Hampir Kadaluarsa </a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Dimusnahkan</a></li>
+            <li><a href="<?php echo base_url()?>ObatHampirExp"><i class="fa fa-circle-o"></i> Hampir Kadaluarsa </a></li>
+            <li><a href="<?php echo base_url()?>ObatDimusnahkan"><i class="fa fa-circle-o"></i> Dimusnahkan</a></li>
           </ul>
         </li>
         <li class="treeview">

@@ -70,7 +70,7 @@
                   <a href="#" class="btn btn-basic btn-flat">Ubah Password</a>
                 </div> -->
                 <div class="pull-right">
-                  <a href="<?php echo base_url() ?>" class="btn btn-default btn-flat">Ubah Password</a>
+                  <a data-href="<?php echo base_url() ?>Login/ChangePassword" data-toggle='modal' data-target='#change-password' class="btn btn-default btn-flat">Ubah Password</a>
                 </div>
               </li>
             </ul>
@@ -198,3 +198,52 @@
               </div>
             </div>
           <!-- /.modal delete -->
+
+    <div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4>Ubah Password</h4>
+                      </div>
+                      
+                    <div class="modal-body" style="margin:auto; width:80%">
+                        <!-- @include('t_log_problem_analisys._form') -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Password Lama</label>
+                                <div class="col-md-7">
+                                <input type="password" class="form-control" name="password_lama" value="" placeholder="password lama" required>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Password Baru</label>
+                                <div class="col-md-7">
+                                  <input type="password" class="form-control" name="password_baru" value="" placeholder="password baru" required>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+                        <div class="row" style="margin: 20px;">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Konfirmasi Password Baru</label>
+                                <div class="col-md-7">
+                                  <input type="password" class="form-control" name="konfirmasi_password" value="" placeholder="konfirmasi password baru"required>
+                                </div>
+                            </div>  
+                            <!-- end form-group -->
+                        </div> 
+                        <!-- end row -->
+                    </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                          <button type="submit" class="btn btn-primary" id="submit">Simpan</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          <!-- /.modal change password -->

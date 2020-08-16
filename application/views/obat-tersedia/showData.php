@@ -20,13 +20,7 @@
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
-                    <th>Batch</th>
-                    <th>Tanggal Pembelian</th>
-                    <th>Tanggal Kadaluarsa</th>
-                    <th>Harga Beli</th>
-                    <th>Qty</th>
-                    <th>Harga Jual</th>
+                    <th>Total Qty</th>
 
                   </tr>
                   </thead>
@@ -39,13 +33,7 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['kode_obat'] ?></td>
                         <td><?php echo $value['nama_obat'] ?></td>
-                        <td><?php echo $value['nama_supplier'] ?></td>
-                        <td><?php echo $value['batch'] ?></td>
-                        <td><?php echo date_format(new DateTime($value['tgl_pembelian']),'d-m-Y') ?></td>
-                        <td><?php echo $value['exp_date'] ?></td>
-                        <td><?php echo number_format($value['harga_beli']) ?></td>
-                        <td><?php echo number_format($value['qty']) ?></td>
-                        <td><?php echo number_format($value['harga_jual']) ?></td>
+                        <td><?php echo number_format($value['total_qty']) ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -57,13 +45,7 @@
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
-                    <th>Batch</th>
-                    <th>Tanggal Pembelian</th>
-                    <th>Tanggal Kadaluarsa</th>
-                    <th>Harga Beli</th>
-                    <th>Qty</th>
-                    <th>Harga Jual</th>
+                    <th>Total Qty</th>
                   </tr>
                   </tfoot>
                 </table>

@@ -20,7 +20,6 @@
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
 
                   </tr>
                   </thead>
@@ -33,7 +32,6 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['kode_obat'] ?></td>
                         <td><?php echo $value['nama_obat'] ?></td>
-                        <td><?php echo $value['nama_supplier'] ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -45,7 +43,6 @@
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
                   </tr>
                   </tfoot>
                 </table>

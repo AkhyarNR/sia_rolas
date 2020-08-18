@@ -23,7 +23,8 @@ class Dashboard extends CI_Controller
     $data = array(  
       'tersedia' => $this->Common_model->getData('*','m_obat','',['total_qty >' => 0],'')->num_rows(),
       'hampir_habis' => $this->Common_model->getData('*','m_obat','',['total_qty >' => 0,'total_qty <=' => 150],'')->num_rows(),
-      'kosong' => $this->Common_model->getData('*','m_obat','',['total_qty' => 0],'')->num_rows()
+      'kosong' => $this->Common_model->getData('*','m_obat','',['total_qty' => 0],'')->num_rows(),
+      'hampir_kadaluarsa' => $this->Common_model->getData('*','m_obat','',['total_qty' => 0],'')->num_rows()
     );
 
     $this->load->view('common/header',$header);

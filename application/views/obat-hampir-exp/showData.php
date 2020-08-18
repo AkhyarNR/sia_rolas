@@ -14,19 +14,19 @@
           <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example2" class="display responsive nowrap" style="width:100%">
+              <table id="example2" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
+                    <th>Supplier</th>
                     <th>Batch</th>
                     <th>Tanggal Pembelian</th>
                     <th>Tanggal Kadaluarsa</th>
                     <th>Harga Beli</th>
                     <th>Qty</th>
-                    <th>Harga Jual</th>
+                    <th>Kadaluarsa</th>
 
                   </tr>
                   </thead>
@@ -45,7 +45,7 @@
                         <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
                         <td><?php echo number_format($value['harga_beli']) ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
-                        <td><?php echo number_format($value['harga_jual']) ?></td>
+                        <td><medium class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $value['countdown']." Hari" ?></medium></td>
                     </tr>
                     <?php
                         $no++;
@@ -54,16 +54,16 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>No</th>
+                  <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
+                    <th>Supplier</th>
                     <th>Batch</th>
                     <th>Tanggal Pembelian</th>
                     <th>Tanggal Kadaluarsa</th>
                     <th>Harga Beli</th>
                     <th>Qty</th>
-                    <th>Harga Jual</th>
+                    <th>Kadaluarsa</th>
                   </tr>
                   </tfoot>
                 </table>

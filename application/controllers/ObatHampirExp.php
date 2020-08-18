@@ -24,7 +24,7 @@ class ObatHampirExp extends CI_Controller
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('o.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, dob.harga_beli, dob.qty, o.harga_jual','m_detail_obat dob',['m_obat o','dob.id_obat = o.id','m_supplier s','dob.id_supplier = s.id'],['dob.qty !=' => 0],['dob.tgl_pembelian','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('dob.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, DATEDIFF(dob.exp_date, CURDATE()) as countdown, dob.harga_beli, dob.qty','m_detail_obat dob',['m_obat o', 'o.id = dob.id_obat', 'm_supplier s', 's.id = dob.id_supplier'],['qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],['id','ASC'])->result_array()
       );
 
       // data for footer 

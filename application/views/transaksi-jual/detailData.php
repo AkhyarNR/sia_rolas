@@ -49,7 +49,7 @@
                           <td><?php echo $value['nama_obat'] ?></td>
                           <td><?php echo $value['nama_supplier'] ?></td>
                           <td><?php echo $value['batch'] ?></td>
-                          <td><?php echo $value['exp_date'] ?></td>
+                          <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
                           <?php if($data->id_resep!=NULL){?>
                             <td><?php echo $value['konsumsi_obat'] ?></td>
                           <?php }?>

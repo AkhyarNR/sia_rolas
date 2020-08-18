@@ -39,11 +39,16 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_resep'] ?></td>
-                        <td><?php echo $value['tgl_resep'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_resep']), 'd-m-Y') ?></td>
                         <td><?php echo $value['nik']." - ".$value['nama_pasien'] ?></td>
                         <td><?php echo $value['nama_user'] ?></td>
                         <td>
+                          <?php
+                          if($value['status']==1){ ?>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'MasterResep/edit/'.$value['id'];?>"><i class="fa fa-edit" ></i></a>
+                          <?php }else{ ?>
+                            <a title="Sudah Dibayar" class="btn btn-warning btn-sm" disabled><i class="fa fa-edit" ></i></a>
+                          <?php }?>
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'MasterResep/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
                           <?php  
                           if($value['status']==1){ ?>
@@ -52,8 +57,13 @@
                           <?php }else{ ?>
                             <a title="Sudah Dibayar" class="btn btn-success btn-sm" disabled><i class="fa fa-check" ></i></a>
                           <?php }?>
+                          <?php
+                          if($value['status']==1){ ?>
                           <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'MasterResep/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus">
                           <i class="fa fa-trash fa-lg"></i></button>
+                          <?php }else{ ?>
+                            <a title="Sudah Dibayar" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash fa-lg" ></i></a>
+                          <?php }?>
                         </td>
                     </tr>
                     <?php

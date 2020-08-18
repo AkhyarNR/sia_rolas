@@ -84,53 +84,41 @@ class Login extends CI_Controller
 
   public function ChangePassword()
   {
-    if($_POST['submit']){
-    //membuat variabel untuk menyimpan data inputan yang di isikan di form
-    $password_lama      = $_POST['password_lama'];
-    $password_baru      = $_POST['password_baru'];
-    $konfirmasi_password  = $_POST['konfirmasi_password'];
+    if(isset($_SESSION['id'])){
+      $id_user = $this->session->userdata('id');
+      $password_lama = $this->input->post('password_lama');
+      $password_baru = $this->input->post('password_baru');
+      $konfirmasi_password = $this->input->post('konfirmasi_password');
 
-    //cek dahulu ke database dengan query SELECT
-    //kondisi adalah WHERE (dimana) kolom password adalah $password_lama di encrypt m5
-    //encrypt -> md5($password_lama)
-    $password_lama  = md5($password_lama);
-    $cek      = $conn->query("SELECT password FROM m_user WHERE password='$password_lama'");
-    
-    if($cek->num_rows){
-      //kondisi ini jika password lama yang dimasukkan sama dengan yang ada di database
-      //membuat kondisi minimal password adalah 5 karakter
-      if(strlen($password_baru) >= 5){
-        //jika password baru sudah 5 atau lebih, maka lanjut ke bawah
-        //membuat kondisi jika password baru harus sama dengan konfirmasi password
-        if($password_baru == $konfirmasi_password){
-          //jika semua kondisi sudah benar, maka melakukan update kedatabase
-          //query UPDATE SET password = encrypt md5 password_baru
-          //kondisi WHERE id user = session id pada saat login, maka yang di ubah hanya user dengan id tersebut
-          $password_baru  = md5($password_baru);
-          $id_user    = $_SESSION['id_user']; //ini dari session saat login
-          
-          $update     = $conn->query("UPDATE m_user SET password='$password_baru' WHERE id_user='$id_user'");
-          if($update){
-            //kondisi jika proses query UPDATE berhasil
-            echo 'Password berhasil di rubah';
-          }else{
-            //kondisi jika proses query gagal
-            echo 'Gagal merubah password';
-          }         
+      $password = $this->Common_model->getData('*','m_user','',['id' => $id_user],'')->row()->password;
+      if(md5($password_lama) == $password) {
+        if ($password_baru == $konfirmasi_password) {
+
+          $update = $this->Common_model->update('m_user',array('password' => md5($password_baru)),['id'=>$id_user]);
+
+        if ($update) {
+          $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil mengubah password.");
+            redirect(base_url().'Dashboard');
         }else{
-          //kondisi jika password baru beda dengan konfirmasi password
-          echo 'Konfirmasi password tidak cocok';
+          $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal mengubah password.");
+            redirect(base_url().'Dashboard');
         }
-      }else{
-        //kondisi jika password baru yang dimasukkan kurang dari 5 karakter
-        echo 'Minimal password baru adalah 5 karakter';
+
+        }else{
+          //password tidak sama
+          $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal mengubah password. Password tidak sama.");
+            redirect(base_url().'Dashboard');
+        }
+      }else{ 
+        //password lama salah
+        $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal mengubah password. Password lama salah.");
+            redirect(base_url().'Dashboard');
       }
+
     }else{
-      //kondisi jika password lama tidak cocok dengan data yang ada di database
-      echo 'Password lama tidak cocok';
+      redirect(base_url().'Login');
     }
   }
-
 }
 
 

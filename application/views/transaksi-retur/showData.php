@@ -41,7 +41,7 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
-                        <td><?php echo $value['tgl_retur'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_retur']), 'd-m-Y') ?></td>
                         <td><?php echo number_format($value['total_qty']) ?></td>
                         <td><?php echo number_format($value['total_harga']) ?></td>
                         <?php

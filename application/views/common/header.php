@@ -113,13 +113,22 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>MasterUser"><i class="fa fa-circle-o"></i> Data User</a></li>
-            <li><a href="<?php echo base_url()?>MasterPasien"><i class="fa fa-circle-o"></i> Data Pasien</a></li>
-            <li><a href="<?php echo base_url()?>MasterSupplier"><i class="fa fa-circle-o"></i> Data Supplier</a></li>
-            <li><a href="<?php echo base_url()?>MasterObat"><i class="fa fa-circle-o"></i> Data Obat</a></li>
-            <li><a href="<?php echo base_url()?>MasterResep"><i class="fa fa-circle-o"></i> Data Resep</a></li>
+            <?php if($this->session->userdata('jabatan') == 'KEPALA APOTEK') { ?> 
+              <li><a href="<?php echo base_url()?>MasterUser"><i class="fa fa-circle-o"></i> Data User</a></li>
+            <?php } ?>
+            <?php if($this->session->userdata('jabatan') != 'PETUGAS APOTEK') { ?>
+              <li><a href="<?php echo base_url()?>MasterPasien"><i class="fa fa-circle-o"></i> Data Pasien</a></li>
+            <?php } ?>
+            <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
+              <li><a href="<?php echo base_url()?>MasterSupplier"><i class="fa fa-circle-o"></i> Data Supplier</a></li>
+            <?php } ?>
+            <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
+              <li><a href="<?php echo base_url()?>MasterObat"><i class="fa fa-circle-o"></i> Data Obat</a></li>
+            <?php } ?>
+              <li><a href="<?php echo base_url()?>MasterResep"><i class="fa fa-circle-o"></i> Data Resep</a></li>
           </ul>
         </li>
+      <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Data Transaksi</span>
@@ -149,6 +158,7 @@
             <li><a href="<?php echo base_url()?>ObatDimusnahkan"><i class="fa fa-circle-o"></i> Dimusnahkan</a></li>
           </ul>
         </li>
+      <?php if($this->session->userdata('jabatan') != 'PETUGAS APOTEK') { ?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-book"></i> <span>Laporan</span>
@@ -163,6 +173,7 @@
             <li><a href="<?php echo base_url()?>LaporanMutasi"><i class="fa fa-circle-o"></i> Laporan Mutasi</a></li>
           </ul>
         </li>
+      <?php } } ?>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -200,6 +211,7 @@
           <!-- /.modal delete -->
 
     <div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <form action="<?php echo base_url()?>Login/ChangePassword" method="post">
               <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                       <div class="modal-header">
@@ -245,5 +257,6 @@
                       </div>
                   </div>
               </div>
+            </form>
             </div>
           <!-- /.modal change password -->

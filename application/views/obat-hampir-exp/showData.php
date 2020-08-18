@@ -42,7 +42,7 @@
                         <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo date_format(new DateTime($value['tgl_pembelian']),'d-m-Y') ?></td>
-                        <td><?php echo $value['exp_date'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
                         <td><?php echo number_format($value['harga_beli']) ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
                         <td><?php echo number_format($value['harga_jual']) ?></td>

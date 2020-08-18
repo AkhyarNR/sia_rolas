@@ -35,7 +35,7 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_resep'] ?></td>
-                        <td><?php echo $value['tgl_resep'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_resep']), 'd-m-Y') ?></td>
                         <td><?php echo $value['nama_user'] ?></td>
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'MasterPasien/edit/'.$value['id'];?>"><i class="fa fa-edit" ></i></a>

@@ -46,7 +46,7 @@
                           <td><?php echo $value['nama_obat'] ?></td>
                           <td><?php echo $value['nama_supplier'] ?></td>
                           <td><?php echo $value['batch'] ?></td>
-                          <td><?php echo $value['exp_date'] ?></td>
+                          <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
                           <td style="text-align:right"><?php echo number_format($value['qty']) ?></td>
                           <td style="text-align:right"><?php echo number_format($value['harga']) ?></td>
                           <td style="text-align:right"><?php echo number_format($value['sub_total']) ?></td>

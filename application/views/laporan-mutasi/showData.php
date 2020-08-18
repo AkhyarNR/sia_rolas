@@ -43,7 +43,7 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
-                        <td><?php echo $value['tgl_transaksi'] ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_transaksi']), 'd-m-Y') ?></td>
                         <td><?php echo $value['nama_obat'] ?></td>
                         <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>

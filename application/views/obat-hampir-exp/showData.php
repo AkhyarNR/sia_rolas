@@ -45,7 +45,7 @@
                         <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
                         <td><?php echo number_format($value['harga_beli']) ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
-                        <td><medium class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $value['countdown']." Hari" ?></medium></td>
+                        <td><medium class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $value['countdown']." Hari Lagi" ?></medium></td>
                     </tr>
                     <?php
                         $no++;

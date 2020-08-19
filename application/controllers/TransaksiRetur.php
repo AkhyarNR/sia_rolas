@@ -80,14 +80,16 @@ class TransaksiRetur extends CI_Controller
   }
 
 
-  public function yuhu(){
-    $this->input->post('tglretur');
-    if(!empty($_FILES['scan_bukti']['name'])){
-    echo "berisi";
-    }else{
-    echo "tidak berisi";
-    }
-  }
+  // public function yuhu(){
+  //   $this->input->post('tglretur');
+  //   if(!empty($_FILES['scan_bukti']['name'])){
+  //   echo "berisi";
+  //   }else{
+  //   echo "tidak berisi";
+  //   }
+  // }
+
+  
   // function for doing insert data into database
   public function insert()
   {

@@ -52,7 +52,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style="margin-bottom:10px;">Obat Hampir <br>Kadaluarsa</span>
-              <span class="info-box-number"><a href="<?php echo base_url()?>ObatHampirExp"><u><?php echo $kosong ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatHampirExp"><u><?php echo $hampir_kadaluarsa ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -73,7 +73,7 @@
             <!-- /.box-header -->
               <div class="box-body">
               <!-- <div style="width:250px; padding: 20px;"> -->
-              <img src="<?= base_url();?>assets/img/rolas-medika-nusantara.png" style="display: block;margin-left: auto;margin-right: auto;width: 250px; margin-top: 25px;margin-bottom: 35px">
+              <img src="<?= base_url();?>assets/img/rolas-medika-nusantara.png" style="display: block;margin-left: auto;margin-right: auto;width: 220px; margin-top: 35px;margin-bottom: 45px">
               <!-- </div> -->
               <h4><strong>Visi :</strong></h4> <h5>Menjadi Klinik Pratama Terkemuka di Kabupaten Jember</h5>
               

@@ -41,7 +41,7 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo date_format(new DateTime($value['tgl_penjualan']), 'd-m-Y') ?></td>
-                        <td><?php echo $value['id_resep'] ?></td>
+                        <td><?php echo $value['no_resep'] ?></td>
                         <td><?php echo number_format($value['total_qty']) ?></td>
                         <td><?php echo number_format($value['total_harga'])?></td>
                         <td>

@@ -80,7 +80,7 @@ class ObatDimusnahkan extends CI_Controller
     
     // load view 
     $this->load->view('common/header',$header);
-    $this->load->view('master-obat/showDataDetail',$data);
+    $this->load->view('obat-dimusnahkan/showDataDetail',$data);
     $this->load->view('common/footer',$footer);
     }else{
       // redirect to 

@@ -80,7 +80,7 @@ class ObatHampirHabis extends CI_Controller
     
     // load view 
     $this->load->view('common/header',$header);
-    $this->load->view('master-obat/showDataDetail',$data);
+    $this->load->view('obat-hampir-habis/showDataDetail',$data);
     $this->load->view('common/footer',$footer);
     }else{
       // redirect to 

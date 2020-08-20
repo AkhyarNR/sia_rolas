@@ -24,7 +24,7 @@ class ObatTersedia extends CI_Controller
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('o.id, o.kode_obat, o.nama_obat, o.total_qty, SUM(select * from m_detail_obat where id_obat = o.id)','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['total_qty >' => 0],['id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('id, kode_obat, nama_obat, total_qty','m_obat','',['total_qty >' => 0, ''],['id','ASC'])->result_array()
       );
 
       // data for footer 

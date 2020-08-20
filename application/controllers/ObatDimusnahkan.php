@@ -63,7 +63,7 @@ class ObatDimusnahkan extends CI_Controller
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('do.id, o.kode_obat, o.nama_obat, s.nama_supplier, do.batch, do.tgl_pembelian, do.exp_date, do.qty, do.harga_beli','m_detail_obat do',['m_obat o', 'do.id_obat = o.id', 'm_supplier s', 'do.id_supplier = s.id'],['dob.exp_date <' => date("Y-m-d")],['o.id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('dob.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, dob.qty, dob.harga_beli','m_detail_obat dob',['m_obat o', 'dob.id_obat = o.id', 'm_supplier s', 'dob.id_supplier = s.id'],['dob.exp_date <' => date("Y-m-d"), 'dob.id_obat' => $id],['o.id','ASC'])->result_array()
       );
 
       // data for footer 

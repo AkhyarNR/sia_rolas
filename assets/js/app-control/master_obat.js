@@ -10,7 +10,7 @@ $(function () {
           {
               extend: 'print',
               exportOptions: { 
-                columns: [ 0, 1, 2, 3] 
+                columns: [ 0, 1, 2, 3, 4] 
                 },
               customize: function ( win ) {
                   $(win.document.body)
@@ -25,7 +25,7 @@ $(function () {
           {
               extend: 'excelHtml5',
               exportOptions: { 
-                columns: [ 0, 1, 2, 3] 
+                columns: [ 0, 1, 2, 3, 4] 
                 }
           }
       ]

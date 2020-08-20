@@ -64,7 +64,7 @@ class LaporanRetur extends CI_Controller
 
       // data for footer 
       $footer = array(
-        'control' => 'transaksi_retur.js',
+        'control' => 'laporan_retur.js',
       );
 
       // get flashdata

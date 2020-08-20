@@ -64,7 +64,7 @@ class LaporanMutasi extends CI_Controller
 
       // data for footer 
       $footer = array(
-        'control' => 'transaksi_mutasi.js',
+        'control' => 'laporan_mutasi.js',
       );
 
       // get flashdata

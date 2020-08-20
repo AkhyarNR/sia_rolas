@@ -59,7 +59,7 @@ class LaporanBeli extends CI_Controller
     
       // data for footer 
       $footer = array(
-        'control' => 'transaksi_beli.js',
+        'control' => 'laporan_pembelian.js',
       );
 
       // get flashdata

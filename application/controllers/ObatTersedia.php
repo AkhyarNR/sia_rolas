@@ -29,7 +29,7 @@ class ObatTersedia extends CI_Controller
 
       // data for footer 
       $footer = array(
-        'control' => 'transaksi_beli.js',
+        'control' => 'obat_tersedia.js',
       );
 
       // get flashdata
@@ -68,7 +68,7 @@ class ObatTersedia extends CI_Controller
 
       // data for footer 
       $footer = array(
-        'control' => 'master_obat.js',
+        'control' => 'detail_obat_tersedia.js',
       );
 
       // get flashdata

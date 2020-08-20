@@ -169,7 +169,7 @@ class MasterResep extends CI_Controller
       $data = array(
         'data' => $this->Common_model->getData('*','t_resep','',['id'=>$id],'')->row(),
         'id_pasien' => $this->Common_model->getData('*','m_pasien','','','')->result_array(),
-        'obat' => $this->Common_model->getData('*','m_obat','','','')->result_array(),
+        'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
         'dosis' => $this->Common_model->getData('*','m_dosis','','','')->result_array(),
         'detail' => $this->Common_model->getData('dr.id, dr.id_resep, dr.id_obat, o.kode_obat, o.nama_obat, dr.qty, dr.id_dosis, d.konsumsi_obat','t_detail_resep dr',['m_obat o','o.id = dr.id_obat','m_dosis d','d.id = dr.id_dosis'],['id_resep'=>$id],'')->result_array(),
         'jumlah' => $this->Common_model->getData('*','t_detail_resep','',['id_resep'=>$id],'')->num_rows()

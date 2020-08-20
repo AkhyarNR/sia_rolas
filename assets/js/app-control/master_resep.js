@@ -106,7 +106,10 @@ $(function () {
             i++;
         }
 
+        
+        $("#modal_tambah_pembelian #obat_id").val("").trigger('change');
         $("#modal_tambah_detailresep #jumlah_id").val('');
+        $("#modal_tambah_pembelian #dosis_id").val("").trigger('change');
     });
 
     $(document).on('click', '.btn_remove_doc', function(event){

@@ -120,6 +120,9 @@ $('#modal_tambah_pembelian #simpan').click(function(){
         i++;
     }
 
+    $("#modal_tambah_pembelian #obat_id").val("").trigger('change');
+    $("#modal_tambah_pembelian #supplier_id").val("").trigger('change');
+    $("#modal_tambah_pembelian #batch_id").val('');
     $("#modal_tambah_pembelian #jumlah_id").val('');
     $("#modal_tambah_pembelian #harga_id").val('');
 });

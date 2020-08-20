@@ -20,13 +20,7 @@
                     <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Supplier</th>
-                    <th>Batch</th>
-                    <th>Tanggal Pembelian</th>
-                    <th>Tanggal Kadaluarsa</th>
-                    <th>Harga Beli</th>
-                    <th>Qty</th>
-                    <th>Kadaluarsa</th>
+                    <th>Total Qty</th>
 
                   </tr>
                   </thead>
@@ -38,14 +32,8 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['kode_obat'] ?></td>
-                        <td><?php echo $value['nama_obat'] ?></td>
-                        <td><?php echo $value['nama_supplier'] ?></td>
-                        <td><?php echo $value['batch'] ?></td>
-                        <td><?php echo date_format(new DateTime($value['tgl_pembelian']),'d-m-Y') ?></td>
-                        <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
-                        <td><?php echo number_format($value['harga_beli']) ?></td>
-                        <td><?php echo number_format($value['qty']) ?></td>
-                        <td><medium class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $value['countdown']." Hari Lagi" ?></medium></td>
+                        <td><a title="Detail Obat" href="<?php echo base_url().'ObatHampirExp/detail/'.$value['id'];?>"><?php echo $value['nama_obat'] ?></a></td>
+                        <td><?php echo $value['total_qty'] ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -57,13 +45,7 @@
                   <th>No</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Supplier</th>
-                    <th>Batch</th>
-                    <th>Tanggal Pembelian</th>
-                    <th>Tanggal Kadaluarsa</th>
-                    <th>Harga Beli</th>
-                    <th>Qty</th>
-                    <th>Kadaluarsa</th>
+                    <th>Total Qty</th>
                   </tr>
                   </tfoot>
                 </table>

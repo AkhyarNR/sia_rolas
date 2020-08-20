@@ -172,8 +172,9 @@ class Common_model extends CI_Model {
 
   // Special model 
   function getResepLeft(){
-    $sql = $this->db->select('p.id, p.no_transaksi, p.tgl_penjualan, p.id_resep, r.no_resep, p.total_qty, p.total_harga');
+    $sql = $this->db->select('p.id, p.no_transaksi, p.tgl_penjualan, p.id_resep, r.no_resep, p.total_qty, p.total_harga, u.nama_user');
     $sql = $this->db->join('t_resep r', 'p.id_resep = r.id','left');
+    $sql = $this->db->join('m_user u','p.id_user = u.id');
     $sql = $this->db->order_by('no_transaksi','ASC');
     $sql = $this->db->get('t_penjualan p');
     return $sql->result_array();

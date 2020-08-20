@@ -12,25 +12,22 @@
         <?php }?>
         <div class="col-md-12">
           <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">
-                  <button type="button" onclick="goBack();" class="btn btn-success">Kembali</button>
-                </h3>
-              </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example2" class="display responsive nowrap" style="width:100%">
+              <table id="example2" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
+                    <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
+                    <th>Supplier</th>
                     <th>Batch</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Exp Date</th>
+                    <th>Tanggal Kadaluarsa</th>
                     <th>Harga Beli</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
+                    <th>Qty</th>
+                    <th>Kadaluarsa</th>
+
                   </tr>
                   </thead>
                   <tbody>
@@ -40,14 +37,15 @@
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
+                        <td><?php echo $value['kode_obat'] ?></td>
                         <td><?php echo $value['nama_obat'] ?></td>
                         <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>
-                        <td><?php echo date_format(new DateTime($value['tgl_pembelian']), 'd-m-Y') ?></td>
+                        <td><?php echo date_format(new DateTime($value['tgl_pembelian']),'d-m-Y') ?></td>
                         <td><?php echo date_format(new DateTime($value['exp_date']), 'd-m-Y') ?></td>
-                        <td><?php echo $value['harga_beli'] ?></td>
+                        <td><?php echo number_format($value['harga_beli']) ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
-                        <td><?php echo number_format($value['qty'] * $value ['harga_beli']) ?></td>
+                        <td><medium class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $value['countdown']." Hari Lagi" ?></medium></td>
                     </tr>
                     <?php
                         $no++;
@@ -56,15 +54,16 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>No</th>
+                  <th>No</th>
+                    <th>Kode Obat</th>
                     <th>Nama Obat</th>
-                    <th>Nama Supplier</th>
+                    <th>Supplier</th>
                     <th>Batch</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Exp Date</th>
+                    <th>Tanggal Kadaluarsa</th>
                     <th>Harga Beli</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
+                    <th>Qty</th>
+                    <th>Kadaluarsa</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -72,6 +71,23 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
+          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4>Hapus Data Transaksi</h4>
+                      </div>
+                      <div class="modal-body">
+                          Apakah anda yakin akan menghapus data ini?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                          <a class="btn btn-danger btn-ok btn-fill">Hapus</a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          <!-- /.modal delete -->
         </div>
         <!-- /.col -->
       </div>

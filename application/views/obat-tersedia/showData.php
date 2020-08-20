@@ -21,6 +21,7 @@
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
                     <th>Total Qty</th>
+                    <th>Batch</th>
 
                   </tr>
                   </thead>
@@ -34,6 +35,7 @@
                         <td><?php echo $value['kode_obat'] ?></td>
                         <td><a title="Detail Obat" href="<?php echo base_url().'ObatTersedia/detail/'.$value['id'];?>"><?php echo $value['nama_obat'] ?></a></td>
                         <td><?php echo number_format($value['total_qty']) ?></td>
+                        <td><?php echo number_format($value['batch']) ?></td>
                     </tr>
                     <?php
                         $no++;
@@ -46,6 +48,7 @@
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
                     <th>Total Qty</th>
+                    <th>Batch</th>
                   </tr>
                   </tfoot>
                 </table>

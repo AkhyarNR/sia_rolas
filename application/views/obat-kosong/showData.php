@@ -31,7 +31,7 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['kode_obat'] ?></td>
-                        <td><a title="Detail Obat" href="<?php echo base_url().'ObatKosong/detail/'.$value['id'];?>"><?php echo $value['nama_obat'] ?></a></td>
+                        <td><?php echo $value['nama_obat'] ?></a></td>
                     </tr>
                     <?php
                         $no++;

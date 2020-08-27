@@ -12,6 +12,11 @@
         <?php }?>
         <div class="col-md-12">
           <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">
+                  <button type="button" onclick="goBack();" class="btn btn-success">Kembali</button>
+                </h3>
+              </div>
               <!-- /.box-header -->
               <div class="box-body">
               <table id="example2" class="display responsive nowrap" style="width:100%">

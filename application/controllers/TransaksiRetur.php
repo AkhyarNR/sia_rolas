@@ -210,8 +210,8 @@ class TransaksiRetur extends CI_Controller
       );
 
       $filter = array(
-        'dob.id_obat' => 'drm.id_obat',
-        'r.id' => $id
+        'r.id' => $id,
+        'dob.id_obat = drm.id_obat' => NULL,
       );
 
       $data = array(
@@ -219,7 +219,7 @@ class TransaksiRetur extends CI_Controller
         'detail' => $this->Common_model->getData('drm.id_retur, drm.id_obat, o.kode_obat, o.nama_obat, dob.batch, drm.id_supplier, s.kode_supplier, s.nama_supplier, dob.tgl_pembelian, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batchbaru, drm.exp_date as expbaru','t_detail_retur_masuk drm',['t_retur r','drm.id_retur = r.id','t_detail_retur_keluar drk','drk.id_retur = r.id','m_obat o','drm.id_obat = o.id','m_detail_obat dob','dob.id = drk.id_detail_obat', 'm_supplier s','drm.id_supplier = s.id'],$filter,'')->result_array(),
         'obat' => $this->Common_model->getData('*','m_obat','',['total_qty !=' => 0],'')->result_array(),
         'supplier' => $this->Common_model->getData('*','m_supplier','','','')->result_array(),
-        'jumlah_data' => $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur'=>$id],'')->num_rows()
+        'jumlah_data' => $this->Common_model->getData('drm.id_retur, drm.id_obat, o.kode_obat, o.nama_obat, dob.batch, drm.id_supplier, s.kode_supplier, s.nama_supplier, dob.tgl_pembelian, dob.exp_date, drm.qty, drm.harga, drk.keterangan, drm.batch as batchbaru, drm.exp_date as expbaru','t_detail_retur_masuk drm',['t_retur r','drm.id_retur = r.id','t_detail_retur_keluar drk','drk.id_retur = r.id','m_obat o','drm.id_obat = o.id','m_detail_obat dob','dob.id = drk.id_detail_obat', 'm_supplier s','drm.id_supplier = s.id'],$filter,'')->num_rows()
       );
 
       $footer = array(

@@ -346,8 +346,8 @@ class TransaksiJual extends CI_Controller
       // doing delete user data
 
       $header = array(
-        'title' => 'Transaksi Penjual',
-        'header' => 'Transaksi Penjual',
+        'title' => 'Transaksi Penjualan',
+        'header' => 'Transaksi Penjualan',
         'sub_header' => 'Detail Transaksi'
       );
       // data for content

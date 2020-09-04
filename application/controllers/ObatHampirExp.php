@@ -24,8 +24,8 @@ class ObatHampirExp extends CI_Controller
       );
       // data for content
       $data = array(  
-        'obat' => $this->Common_model->getDataDistinct('o.id, o.kode_obat, o.nama_obat, o.total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0],'')->result_array(),
-        'dataTable' => $this->Common_model->getDataDistinct('o.id, o.kode_obat, o.nama_obat, o.total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],['o.id','ASC'])->result_array()
+        // 'obat' => $this->Common_model->getDataDistinct('o.id, o.kode_obat, o.nama_obat, o.total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0],'')->result_array(),
+        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],['o.id'])->result_array()
       );
 
       // data for footer 

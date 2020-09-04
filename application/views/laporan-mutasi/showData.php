@@ -39,6 +39,23 @@
                     <?php
                         $no = 1;
                         foreach($dataTable as $key => $value){
+                            if($value['jenis']=="SO"){
+                                $jenis = "Non-Resep";
+                                $color = "primary";
+                            }
+                            if($value['jenis']=="SI"){
+                                $jenis = "Resep";
+                                $color = "info";
+                            }
+                            if($value['jenis']=="BY"){
+                                $jenis = "Pembelian";
+                                $color = "success";
+                            }
+                            if($value['jenis']=="RT"){
+                                $jenis = "Retur";
+                                $color = "warning";
+                            }
+
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
@@ -47,7 +64,7 @@
                         <td><?php echo $value['nama_obat'] ?></td>
                         <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>
-                        <td><?php echo $value['jenis'] ?></td>
+                        <td><medium class="label label-<?php echo $color?>"><?php echo $jenis;?></medium></td>
                         <td><?php echo $value['masuk'] ?></td>
                         <td><?php echo $value['keluar'] ?></td>
                         <td><?php echo $value['stok'] ?></td>

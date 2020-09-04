@@ -253,7 +253,7 @@ class TransaksiRetur extends CI_Controller
             }else
               $update = $this->Common_model->update('t_retur',array('tgl_retur' => $tglretur),['id'=>$id]);
             // if success do
-            if($updatedetail){
+            if($update){
               $jumlah_detail = $this->Common_model->getData('*','t_detail_retur_keluar','',['id_retur' => $id],'')->num_rows();
               $detail_old = $this->Common_model->getData('*','t_detail_retur_keluar','',['id_retur' => $id],'')->result_array();
             for($n=0;$n<$jumlah_detail;$n++){

@@ -24,9 +24,9 @@ $(function () {
 
     // alert(penyebab);
 
-    if(!obat ||!jumlah || !harga){
+    if(!obat ||jumlah < 1 || harga < 1){
         $('#modal_edit_penjualan #update').attr("data-dismiss","");  
-        alert('Data Tidak Boleh Kosong');
+        alert('Terdapat data yang kosong!');
         return false;
     }else {
         $('#modal_edit_penjualan #update').attr("data-dismiss","modal");
@@ -74,11 +74,11 @@ $(function () {
 
         // alert(obat);
 
-        if(!obat || !jumlah || !harga){
+        if(!obat || jumlah < 1 || harga < 1){
             
             // alert(harga);
             $('#modal_tambah_penjualan #simpan').attr("data-dismiss","");  
-            alert('Terdapat data yang belum diisi!');
+            alert('Terdapat data yang kosong!');
         } else {
             $('#modal_tambah_penjualan #simpan').attr("data-dismiss","modal");
         $('#tangkap').append('<tr id="row_doc'+i+'" class="dynamic-added"><td>'+ text_obat +' <input name="obat[]" type="hidden" value= "' + obat + '" ></td><td>' + nf.format(jumlah) +' <input name="jumlah[]" type="hidden" value= "' + jumlah + '" ></td><td>' + nf.format(harga) +' <input name="harga[]" type="hidden" value= "' + harga + '" ></td><td>' + nf.format(total) +' <input name="total[]" type="hidden" value= "' + total + '" ></td><td><button type="button" style="margin:1px;"name="edit" id="'+i+'"  class="btn btn-warning " data-toggle="modal" data-target="#modal_edit_penjualan" data-obat="'+obat+'" data-jumlah="'+jumlah+'" data-harga="'+harga+'"data-rowid= '+i+'><span class="glyphicon glyphicon-edit"></span></button> <button type="button" style="margin:1px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove_doc"><span class="glyphicon glyphicon-trash"></span></button></td></tr>');

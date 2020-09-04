@@ -28,7 +28,7 @@
                 <div class="col-md-6"> 
                     <div class="form-group">
                         <label>Pasien</label>
-                        <select class="form-control select2" style="width: 100%;" name="id_pasien" required>
+                        <select class="form-control select2" style="width: 100%;" id="id_pasien" name="id_pasien" required>
                         <option value="" disabled selected>Pilih Pasien</option>
                         <?php foreach($id_pasien as $key => $value){ ?> 
                             <!-- foreach -->
@@ -236,12 +236,21 @@
         <script>
             function saveData() {
                 var attr = $("#tangkap").find('tr').length;
-                if(attr==1){
-                    alert("Data penjualan tidak boleh kosong!");
+                var pasien = $("#id_pasien").val();
+                if(attr==1 ){
+                    alert("Data resep tidak boleh kosong!");
                     return false;
                 }
-                    else
-                    return true;
+                else
+                {
+                    if(pasien==null){
+                        alert("Data pasien belum dipilih!");
+                    return false;
+                    }
+                    else{
+                        return true;
+                    }
                 }
+            }
         </script>
 </section>

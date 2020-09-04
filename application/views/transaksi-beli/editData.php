@@ -273,7 +273,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Jumlah Obat</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" id="jumlah_id" min="0" placeholder="Jumlah Obat" required>
+                                    <input type="number" class="form-control" id="jumlah_id" min="1" placeholder="Jumlah Obat" required>
                                 </div>
                             </div>  
                             <!-- end form-group -->
@@ -284,7 +284,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Harga per-item</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" id="harga_id" min="0" placeholder="Harga per-item" required>
+                                    <input type="number" class="form-control" id="harga_id" min="1" placeholder="Harga per-item" required>
                                 </div>
                             </div>  
                             <!-- end form-group -->
@@ -376,7 +376,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Jumlah Obat</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" id="jumlah_id" min="0" placeholder="Jumlah Obat" required>
+                                    <input type="number" class="form-control" id="jumlah_id" min="1" placeholder="Jumlah Obat" required>
                                 </div>
                             </div>  
                             <!-- end form-group -->
@@ -387,7 +387,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Harga per-item</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" id="harga_id" min="0" placeholder="Harga per-item" required>
+                                    <input type="number" class="form-control" id="harga_id" min="1" placeholder="Harga per-item" required>
                                 </div>
                             </div>  
                             <!-- end form-group -->

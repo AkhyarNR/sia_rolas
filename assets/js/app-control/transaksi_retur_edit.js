@@ -33,9 +33,9 @@ $('#modal_edit_retur #update').click(function(){
 
     // alert(penyebab);
 
-    if(!obat || !batch || !supplier ||!tglbeli || !exp || !qty || !harga || !sub_total || !keterangan || !batchbaru || !expbaru){
+    if(!obat || !batch || !supplier ||!tglbeli || !exp || qty < 1 || harga < 1 || !sub_total || !keterangan || !batchbaru || !expbaru){
         $('#modal_edit_retur #update').attr("data-dismiss","");  
-        alert('Data Tidak Boleh Kosong');
+        alert('Terdapat data yang kosong!');
         return false;
     }else {
         $('#modal_edit_retur #update').attr("data-dismiss","modal");
@@ -188,10 +188,10 @@ $('#modal_tambah_retur #simpan').click(function(){
 
     // alert(obat);
 
-    if(!obat || !batch || !supplier ||!tglbeli || !exp || !qty || !harga || !sub_total || !keterangan || !batchbaru || !expbaru){
+    if(!obat || !batch || !supplier ||!tglbeli || !exp || qty < 1 || harga < 1|| !sub_total || !keterangan || !batchbaru || !expbaru){
         // alert(harga);
         $('#modal_tambah_retur #simpan').attr("data-dismiss","");  
-        alert('Terdapat data yang belum diisi!');
+        alert('Terdapat data yang kosong!');
     } else {
         $('#modal_tambah_retur #simpan').attr("data-dismiss","modal");
         $('#tangkap').append('<tr id="row_doc'+i+'" class="dynamic-added"><td>'+ text_obat +' <input name="obat[]" type="hidden" value= "' + obat + '" ></td><td>' + text_batch +' <input name="batch[]" type="hidden" value= "' + batch + '" ></td><td>' + supplier +' <input name="supplier[]" type="hidden" value= "' + id_supplier + '" ></td><td>' + tglbeli +' <input name="tglbeli[]" type="hidden" value= "' + tglbeli + '" ></td><td>' + exp +' <input name="exp[]" type="hidden" value= "' + exp + '" ></td><td>' + nf.format(qty) +' <input name="qty[]" type="hidden" value= "' + qty + '" ></td><td>' + nf.format(harga) +' <input name="harga[]" type="hidden" value= "' + harga + '" ></td><td>' + keterangan +' <input name="keterangan[]" type="hidden" value= "' + keterangan + '" ></td><td>' + batchbaru +' <input name="batchbaru[]" type="hidden" value= "' + batchbaru + '" ></td><td>' + expbaru +' <input name="expbaru[]" type="hidden" value= "' + expbaru + '" ></td><td><button type="button" style="margin:1px;"name="edit" id="'+i+'"  class="btn btn-warning " data-toggle="modal" data-target="#modal_edit_retur" data-obat="'+obat+'" data-batch="'+batch+'" data-id_supplier=id_supplier_id data-supplier="'+supplier+'" data-tglbeli="'+tglbeli+'" data-exp="'+exp+'" data-qty="'+qty+'" data-harga="'+harga+'" data-keterangan="'+keterangan+'" data-batchbaru="'+batchbaru+'" data-expbaru="'+expbaru+'"data-rowid= '+i+'><span class="glyphicon glyphicon-edit"></span></button> <button type="button" style="margin:1px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove_doc"><span class="glyphicon glyphicon-trash"></span></button></td></tr>');

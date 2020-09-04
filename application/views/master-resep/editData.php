@@ -265,12 +265,21 @@
         <script>
             function saveData() {
                 var attr = $("#tangkap").find('tr').length;
-                if(attr==1){
-                    alert("Data penjualan tidak boleh kosong!");
+                var pasien = $("#id_pasien").val();
+                if(attr==1 ){
+                    alert("Data resep tidak boleh kosong!");
                     return false;
                 }
-                    else
-                    return true;
+                else
+                {
+                    if(pasien==null){
+                        alert("Data pasien belum dipilih!");
+                    return false;
+                    }
+                    else{
+                        return true;
+                    }
                 }
+            }
         </script>
 </section>

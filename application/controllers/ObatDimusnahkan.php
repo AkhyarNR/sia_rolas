@@ -24,7 +24,7 @@ class ObatDimusnahkan extends CI_Controller
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getDataDistinct('o.id, o.kode_obat, o.nama_obat, o.total_qty','m_obat o',['m_detail_obat dob','dob.id_obat = o.id'],['dob.exp_date <' => date("Y-m-d")],['o.id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob','dob.id_obat = o.id'],['dob.exp_date <' => date("Y-m-d")],['o.id'])->result_array()
       );
 
       // data for footer 

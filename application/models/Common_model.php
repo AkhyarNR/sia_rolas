@@ -202,7 +202,7 @@ class Common_model extends CI_Model {
     $sql = $this->db->join('t_resep rs', 'p.id_resep = rs.id','left');
     $sql = $this->db->join('t_detail_resep dr', 'dr.id_resep = rs.id','left');
     $sql = $this->db->join('m_dosis ds', 'dr.id_dosis = ds.id','left');
-    $sql = $this->db->order_by('dp.id','ASC');
+    $sql = $this->db->group_by('dp.id');
     $sql = $this->db->where(array('dp.id_penjualan' => $id));
     $sql = $this->db->get('t_detail_penjualan dp');
     return $sql->result_array();

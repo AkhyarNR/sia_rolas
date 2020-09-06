@@ -64,6 +64,8 @@
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
                     <th>Total Qty</th>
+                    <th>Harga Beli Tertinggi</th>
+                    <th>Harga Jual</th>
                     <th>Opsi</th>
                   </tr>
                   </tfoot>

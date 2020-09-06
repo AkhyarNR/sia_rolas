@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Harga Beli Terbaru</label>
+                        <label>Harga Beli Tertinggi</label>
                         <input type="text" class="form-control" name="hargabeli" placeholder="Harga Beli" value="<?php echo $data->harga_beli ?>" disabled>
                     </div>  
                     

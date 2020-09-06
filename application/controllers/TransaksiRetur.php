@@ -154,6 +154,10 @@ class TransaksiRetur extends CI_Controller
                 'keterangan' => $this->input->post('keterangan')[$i]
               );
               $add_detail = $this->Common_model->insert('t_detail_retur_keluar',$sub_values_keluar);
+              // Important!
+              $cek_lama = $this->Common_model->getData('*','m_detail_obat','',['id' => $this->input->post('batch')[$i]],'')->row();
+              $stokrefresh = $this->Common_model->update('m_detail_obat',array('qty' => $cek_lama->qty - $this->input->post('qty')[$i]),['id' => $this->input->post('batch')[$i]]);
+              // ===
               $qty = $this->input->post('qty')[$i];
               $harga = $this->input->post('harga')[$i];
               $sub_values_masuk = array(
@@ -255,13 +259,15 @@ class TransaksiRetur extends CI_Controller
             // if success do
             if($update){
               $jumlah_detail = $this->Common_model->getData('*','t_detail_retur_keluar','',['id_retur' => $id],'')->num_rows();
-              $detail_old = $this->Common_model->getData('*','t_detail_retur_keluar','',['id_retur' => $id],'')->result_array();
+              $detail_old_keluar = $this->Common_model->getData('*','t_detail_retur_keluar','',['id_retur' => $id],'')->result_array();
+              $detail_old_masuk = $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur' => $id],'')->result_array();
             for($n=0;$n<$jumlah_detail;$n++){
-              $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old[$n]['id_detail_obat']],'')->row();
-              $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old[$n]['qty']),'status'=>1],['id'=>$detail_old[$n]['id_detail_obat']]);
-              if($return_old){
-                $delete_old = $this->Common_model->delete('t_detail_retur_keluar',['id'=>$detail_old[$n]['id']]);
-                }
+              $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old_keluar[$n]['id_detail_obat']],'')->row();
+              $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old_keluar[$n]['qty']),'status'=>1],['id'=>$detail_old_keluar[$n]['id_detail_obat']]);
+                if($return_old){
+                  $delete_old_keluar = $this->Common_model->delete('t_detail_retur_keluar',['id_retur'=>$id]);
+                  $delete_old_masuk = $this->Common_model->delete('t_detail_retur_masuk',['id_retur'=>$id]);
+                  }
               }
 
             $row = 0;
@@ -274,6 +280,10 @@ class TransaksiRetur extends CI_Controller
                     'keterangan' => $this->input->post('keterangan')[$i]
                     );
                   $add_detail = $this->Common_model->insert('t_detail_retur_keluar',$sub_values_keluar);
+                  // Important!
+                  $cek_lama = $this->Common_model->getData('*','m_detail_obat','',['id' => $this->input->post('batch')[$i]],'')->row();
+                  $stokrefresh = $this->Common_model->update('m_detail_obat',array('qty' => $cek_lama->qty - $this->input->post('qty')[$i]),['id' => $this->input->post('batch')[$i]]);
+                  // ===
                   $qty = $this->input->post('qty')[$i];
                   $harga = $this->input->post('harga')[$i];
                   $sub_values_masuk = array(
@@ -312,37 +322,37 @@ class TransaksiRetur extends CI_Controller
   public function delete()
   {
     // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-      $id = $this->uri->segment(3);
-      // doing delete user data
-      $sql = $this->Common_model->delete('t_retur',['id'=>$id]);
-      $retur = $this->Common_model->getData('*','t_retur','',['id'=>$id],'')->row();
+    // if(isset($_SESSION['id'])){
+    //   $id = $this->uri->segment(3);
+    //   // doing delete user data
+    //   $sql = $this->Common_model->delete('t_retur',['id'=>$id]);
+    //   $retur = $this->Common_model->getData('*','t_retur','',['id'=>$id],'')->row();
 
-        $jumlah_detail = $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur' => $retur->id],'')->num_rows();
-        $detail_old = $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur' => $retur->id],'')->result_array();
-        $cek = 0;
-        for($n=0;$n<$jumlah_detail;$n++){
-          $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old[$n]['id_detail_obat']],'')->row();
-          $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old[$n]['qty']),'status'=>1],['id'=>$detail_old[$n]['id_detail_obat']]);
-          if($return_old){
-            $delete_old = $this->Common_model->delete('t_detail_retur_masuk','',['id'=>$detail_old[$n]['id']]);
+    //     $jumlah_detail = $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur' => $retur->id],'')->num_rows();
+    //     $detail_old = $this->Common_model->getData('*','t_detail_retur_masuk','',['id_retur' => $retur->id],'')->result_array();
+    //     $cek = 0;
+    //     for($n=0;$n<$jumlah_detail;$n++){
+    //       $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old[$n]['id_detail_obat']],'')->row();
+    //       $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old[$n]['qty']),'status'=>1],['id'=>$detail_old[$n]['id_detail_obat']]);
+    //       if($return_old){
+    //         $delete_old = $this->Common_model->delete('t_detail_retur_masuk','',['id'=>$detail_old[$n]['id']]);
           
-          }
-          $cek++;
-        }
+    //       }
+    //       $cek++;
+    //     }
 
-      if($cek==$jumlah_detail){
-        // set flashdata success
-        $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil menghapus data.");
-        redirect(base_url().'TransaksiRetur');
-      }else{
-        // set flashdata error
-        $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal menghapus data.");
-        redirect(base_url().'TransaksiRetur');
-      }
-    }else{
-        redirect(base_url().'Login');
-    }
+    //   if($cek==$jumlah_detail){
+    //     // set flashdata success
+    //     $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil menghapus data.");
+    //     redirect(base_url().'TransaksiRetur');
+    //   }else{
+    //     // set flashdata error
+    //     $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal menghapus data.");
+    //     redirect(base_url().'TransaksiRetur');
+    //   }
+    // }else{
+    //     redirect(base_url().'Login');
+    // }
   }
 
   public function detail()
@@ -425,8 +435,10 @@ class TransaksiRetur extends CI_Controller
   function testing()
   {
     $id = $this->uri->segment(3);
-    $sql = $this->Common_model->getData('drm.id_retur, drm.id_obat, drm.id_supplier, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru','t_detail_retur_masuk drm',['t_retur r','drm.id_retur = r.id','t_detail_retur_keluar drk','drk.id_retur = r.id'],['r.id'=>$id],'')->result_array();
-    echo json_encode($sql);
+    // $sql = $this->Common_model->getData('drm.id_retur, drm.id_obat, drm.id_supplier, drm.qty, drm.harga, drk.keterangan, drm.batch as batch_baru, drm.exp_date as exp_date_baru','t_detail_retur_masuk drm',['t_retur r','drm.id_retur = r.id','t_detail_retur_keluar drk','drk.id_retur = r.id'],['r.id'=>$id],'')->result_array();
+    $cek_lama = $this->Common_model->getData('*','m_detail_obat','',['id' => $this->input->post('batch')[0]],'')->row();
+    $stokrefresh = $this->Common_model->update('m_detail_obat',array('qty' => $cek_lama->qty - $this->input->post('qty')[0]),['id' => $this->input->post('batch')[0]]);
+    echo json_encode($cek_lama->qty);
   }
 
 }

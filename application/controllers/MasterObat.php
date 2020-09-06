@@ -115,7 +115,7 @@ class MasterObat extends CI_Controller
       );
 
       $data = array(
-        'data' => $this->Common_model->getData('o.id, o.kode_obat, o.nama_obat, do.harga_beli, o.harga_jual','m_obat o',['m_detail_obat do','o.id = do.id_obat'],['o.id'=>$id],'')->row()
+        'data' => $this->Common_model->getData('o.id, o.kode_obat, o.nama_obat, MAX(do.harga_beli) as harga_beli, o.harga_jual','m_obat o',['m_detail_obat do','o.id = do.id_obat'],['o.id'=>$id],'')->row()
       );
 
       $footer = array(
@@ -195,7 +195,7 @@ class MasterObat extends CI_Controller
       );
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('do.id, o.nama_obat, s.nama_supplier, do.batch, do.tgl_pembelian, do.exp_date, do.harga_beli, do.qty','m_detail_obat do',['m_obat o', 'do.id_obat = o.id', 'm_supplier s', 'do.id_supplier = s.id'],['id_obat'=>$id, 'qty >' => 0],['id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('do.id, o.nama_obat, s.nama_supplier, do.batch, do.tgl_pembelian, do.exp_date, do.harga_beli, do.qty','m_detail_obat do',['m_obat o', 'do.id_obat = o.id', 'm_supplier s', 'do.id_supplier = s.id'],['id_obat'=>$id, 'qty >' => 0,'DATEDIFF(do.exp_date, CURDATE()) >' => 90],['id','ASC'])->result_array()
       );
 
       // data for footer 

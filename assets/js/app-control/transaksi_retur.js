@@ -53,7 +53,7 @@ $('#modal_edit_retur #update').click(function(){
 
     // alert(penyebab);
 
-    if(!obat || !batch || !supplier ||!tglbeli || !exp || !qty || !harga || !sub_total || !keterangan || !batchbaru || !expbaru){
+    if(!obat || !batch || !supplier ||!tglbeli || !exp || qty < 1 || harga < 1 || harga < 1 || !keterangan || !batchbaru || !expbaru){
         $('#modal_edit_retur #update').attr("data-dismiss","");  
         alert('Data Tidak Boleh Kosong');
         return false;
@@ -208,7 +208,7 @@ $('#modal_tambah_retur #simpan').click(function(){
 
     // alert(obat);
 
-    if(!obat || !batch || !supplier ||!tglbeli || !exp || !qty || !harga || !sub_total || !keterangan || !batchbaru || !expbaru){
+    if(!obat || !batch || !supplier ||!tglbeli || !exp || qty < 1 || harga < 1 || harga < 1 || !keterangan || !batchbaru || !expbaru){
         // alert(harga);
         $('#modal_tambah_retur #simpan').attr("data-dismiss","");  
         alert('Terdapat data yang belum diisi!');

@@ -346,7 +346,7 @@ class MasterResep extends CI_Controller
               $harga = $this->Common_model->getData('*','m_obat','',['id'=>$id_obat],'')->row()->harga_jual;
               $sub_total = $qty * $harga;
               while($qty!=0){
-                $cek = $this->Common_model->getData('*','m_detail_obat','',['id_obat'=>$id_obat,'qty !='=> 0 ],['tgl_pembelian','ASC'])->row();
+                $cek = $this->Common_model->getData('*','m_detail_obat','',['id_obat'=>$id_obat,'qty !='=> 0,'DATEDIFF(exp_date, CURDATE()) >' => 90 ],['tgl_pembelian','ASC'])->row();
                 if($cek->qty >= $qty){
                   $sub_values = array(
                     'id_penjualan' => $id,

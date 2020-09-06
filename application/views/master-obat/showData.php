@@ -26,6 +26,7 @@
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
                     <th>Total Qty</th>
+                    <th>Harga Beli Tertinggi</th>
                     <th>Harga Jual</th>
                     <th>Opsi</th>
 
@@ -41,7 +42,11 @@
                         <td><?php echo $value['kode_obat'] ?></td>
                         <td><a title="Detail Obat" href="<?php echo base_url().'MasterObat/detail/'.$value['id'];?>"><?php echo $value['nama_obat'] ?></a></td>
                         <td><?php echo number_format($value['total_qty']) ?></td>
-                        <td><?php echo number_format($value['harga_jual']) ?></td>
+                        <td><?php echo number_format($value['harga_beli_tertinggi']) ?></td>
+                        <?php if($value['total_qty'] != 0 && $value['harga_jual']==0 ){?>
+                        <?php echo "<td> <i class='label label-danger'>Belum Diatur !</i></td>" ?>
+                        <?php }else echo "<td>". number_format($value['harga_jual'])."</td>" ?>
+                        
                         <td>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'MasterObat/edit/'.$value['id'];?>"><i class="fa fa-edit" ></i></a>
                           <button class="btn btn-danger btn-sm btn-fill" data-href="<?php echo base_url().'MasterObat/delete/'.$value['id'];?>" data-toggle='modal' data-target='#confirm-delete' title="Hapus">

@@ -277,37 +277,37 @@ class TransaksiBeli extends CI_Controller
   // function to doing delete from database
   public function delete()
   {
-    // Check if session data(id) is available
-    if(isset($_SESSION['id'])){
-      $id = $this->uri->segment(3);
-      // doing delete user data
-      $sql = $this->Common_model->delete('t_pembelian',['id'=>$id]);
-      $pembelian = $this->Common_model->getData('*','t_pembelian','',['id'=>$id],'')->row();
+    // // Check if session data(id) is available
+    // if(isset($_SESSION['id'])){
+    //   $id = $this->uri->segment(3);
+    //   // doing delete user data
+    //   $sql = $this->Common_model->delete('t_pembelian',['id'=>$id]);
+    //   $pembelian = $this->Common_model->getData('*','t_pembelian','',['id'=>$id],'')->row();
 
-        $jumlah_detail = $this->Common_model->getData('*','t_detail_pembelian','',['id_pembelian' => $pembelian->id],'')->num_rows();
-        $detail_old = $this->Common_model->getData('*','t_detail_pembelian','',['id_pembelian' => $pembelian->id],'')->result_array();
-        $cek = 0;
-        for($n=0;$n<$jumlah_detail;$n++){
-          $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old[$n]['id_detail_obat']],'')->row();
-          $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old[$n]['qty']),'status'=>1],['id'=>$detail_old[$n]['id_detail_obat']]);
-          if($return_old){
-            $delete_old = $this->Common_model->delete('t_detail_pembelian',['id'=>$detail_old[$n]['id']]);
-          }
-          $cek++;
-        }
+    //     $jumlah_detail = $this->Common_model->getData('*','t_detail_pembelian','',['id_pembelian' => $pembelian->id],'')->num_rows();
+    //     $detail_old = $this->Common_model->getData('*','t_detail_pembelian','',['id_pembelian' => $pembelian->id],'')->result_array();
+    //     $cek = 0;
+    //     for($n=0;$n<$jumlah_detail;$n++){
+    //       $jumlah_old = $this->Common_model->getData('*','m_detail_obat','',['id'=>$detail_old[$n]['id_detail_obat']],'')->row();
+    //       $return_old = $this->Common_model->update('m_detail_obat',['qty'=>($jumlah_old->qty+$detail_old[$n]['qty']),'status'=>1],['id'=>$detail_old[$n]['id_detail_obat']]);
+    //       if($return_old){
+    //         $delete_old = $this->Common_model->delete('t_detail_pembelian',['id'=>$detail_old[$n]['id']]);
+    //       }
+    //       $cek++;
+    //     }
 
-      if($cek==$jumlah_detail){
-        // set flashdata success
-        $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil menghapus data.");
-        redirect(base_url().'TransaksiBeli');
-      }else{
-        // set flashdata error
-        $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal menghapus data.");
-        redirect(base_url().'TransaksiBeli');
-      }
-    }else{
-        redirect(base_url().'Login');
-    }
+    //   if($cek==$jumlah_detail){
+    //     // set flashdata success
+    //     $this->session->set_flashdata('success', "<strong> Sukses!</strong> Berhasil menghapus data.");
+    //     redirect(base_url().'TransaksiBeli');
+    //   }else{
+    //     // set flashdata error
+    //     $this->session->set_flashdata('error', "<strong> Error!</strong> Gagal menghapus data.");
+    //     redirect(base_url().'TransaksiBeli');
+    //   }
+    // }else{
+    //     redirect(base_url().'Login');
+    // }
   }
 
   public function detail()

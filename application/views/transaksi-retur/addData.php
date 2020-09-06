@@ -149,7 +149,6 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Batch Obat</label>
                                 <div class="col-md-7">
-                                    <!-- <input type="text" class="form-control" id="batch_id" placeholder="Batch Obat" required> -->
                                     <select class="form-control select2" style="width: 100%;" id="batch_id" onChange="setValueData();" required>
                                     <option value="" disabled selected>Pilih Batch Obat</option>
                                     </select>

@@ -16,6 +16,7 @@
                         <input type="hidden" class="form-control" name="id" value="<?php echo $data->id ?>">
                         <label>No Transaksi</label>
                         <input type="text" class="form-control" name="notransaksi" value="<?php echo $data->no_transaksi ?>" disabled>
+                        <input type="hidden" class="form-control" name="notransaksi_old" value="<?php echo $data->no_transaksi ?>">
                     </div>  
                     
                 </div>

@@ -230,7 +230,7 @@ class TransaksiJual extends CI_Controller
     // Check if session data(id) is available
     if(isset($_SESSION['id'])){
       $id =  $this->input->post('id');
-      $kode = $this->input->post('notransaksi');
+      $kode = $this->input->post('notransaksi_old');
       $tgl_jual = $this->input->post('tgljual');
       
       // doing update user data
@@ -264,7 +264,7 @@ class TransaksiJual extends CI_Controller
               );
               $add_detail = $this->Common_model->insert('t_detail_penjualan',$sub_values);
               $update_stok = $this->Common_model->update('m_detail_obat',array('qty' => $cek->qty - $qty),['id'=>$cek->id]);
-              $mutasi = $this->Common_model->update('t_mutasi',array('jenis'=>'SO'),['no_transaksi'=>$kode.$id]);
+              $mutasi = $this->Common_model->update('t_mutasi',array('jenis'=>'SO'),['no_transaksi'=>$kode]);
               $qty = 0;
             }else if($cek->qty < $qty){
                 $sub_values = array(
@@ -276,7 +276,7 @@ class TransaksiJual extends CI_Controller
                 );
                 $add_detail = $this->Common_model->insert('t_detail_penjualan',$sub_values);
                 $update_stok = $this->Common_model->update('m_detail_obat',array('qty' => 0,'status'=>0),['id'=>$cek->id]);
-                $mutasi = $this->Common_model->update('t_mutasi',array('jenis'=>'SO'),['no_transaksi'=>$kode.$id]);
+                $mutasi = $this->Common_model->update('t_mutasi',array('jenis'=>'SO'),['no_transaksi'=>$kode]);
                 $qty = $qty - $cek->qty;
               }
           }
@@ -381,9 +381,9 @@ class TransaksiJual extends CI_Controller
   }
 
   public function testing(){
-    $id = 4;
-    $sql = $this->Common_model->getDetailLeft($id);
-    echo json_encode($sql);
+    // $id = 4;
+    // $sql = $this->Common_model->getDetailLeft($id);
+    echo json_encode($this->input->post('notransaksi'));
     // echo json_encode($sql);
   }
 

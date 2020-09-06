@@ -272,13 +272,8 @@
                 }
                 else
                 {
-                    if(pasien==null){
-                        alert("Data pasien belum dipilih!");
-                    return false;
-                    }
-                    else{
+                    
                         return true;
-                    }
                 }
             }
         </script>

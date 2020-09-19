@@ -38,7 +38,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>IA</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SIA</b>ROLAS</span>
+      <span class="logo-lg"><b>SIA </b>ROLAS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -93,7 +93,7 @@
           <img src="<?php echo base_url()?>assets/img/user.jpeg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo "Username : ".$this->session->userdata('username'); ?></p>
+          <p><?php echo "Sedang Online"?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> <?php echo $this->session->userdata('jabatan'); ?></a>
         </div>
       </div>
@@ -113,7 +113,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <?php if($this->session->userdata('jabatan') == 'KEPALA APOTEK') { ?> 
+            <?php if($this->session->userdata('jabatan') == 'ADMIN') { ?> 
               <li><a href="<?php echo base_url()?>MasterUser"><i class="fa fa-circle-o"></i> Data User</a></li>
             <?php } ?>
             <?php if($this->session->userdata('jabatan') != 'PETUGAS APOTEK') { ?>
@@ -126,9 +126,12 @@
               <li><a href="<?php echo base_url()?>MasterObat"><i class="fa fa-circle-o"></i> Data Obat</a></li>
             <?php } ?>
               <li><a href="<?php echo base_url()?>MasterResep"><i class="fa fa-circle-o"></i> Data Resep</a></li>
+            <?php if($this->session->userdata('jabatan') == 'ADMIN') { ?> 
+              <li><a href="<?php echo base_url()?>Setting"><i class="fa fa-circle-o"></i> Setting Data</a></li>
+            <?php } ?>
           </ul>
         </li>
-      <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
+      <?php if($this->session->userdata('jabatan') != 'DOKTER') || ($this->session->userdata('jabatan') != 'PERAWAT') || ($this->session->userdata('jabatan') != 'ADMIN') || ($this->session->userdata('jabatan') != 'KEPALA KLINIK') {?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Data Transaksi</span>
@@ -140,9 +143,9 @@
             <li><a href="<?php echo base_url()?>TransaksiBeli"><i class="fa fa-circle-o"></i> Pembelian Obat</a></li>
             <li><a href="<?php echo base_url()?>TransaksiJual"><i class="fa fa-circle-o"></i> Penjualan Obat</a></li>
             <li><a href="<?php echo base_url()?>TransaksiRetur"><i class="fa fa-circle-o"></i> Retur Obat</a></li>
-            
           </ul>
         </li>
+      <?php } ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span> Ketersediaan Obat</span>
@@ -171,9 +174,10 @@
             <li><a href="<?php echo base_url()?>LaporanJual"><i class="fa fa-circle-o"></i> Laporan Penjualan</a></li>
             <li><a href="<?php echo base_url()?>LaporanRetur"><i class="fa fa-circle-o"></i> Laporan Retur</a></li>
             <li><a href="<?php echo base_url()?>LaporanMutasi"><i class="fa fa-circle-o"></i> Laporan Mutasi</a></li>
+            <li><a href="<?php echo base_url()?>LaporanDimusnahkan"><i class="fa fa-circle-o"></i> Laporan Obat Dimusnahkan</a></li>
           </ul>
         </li>
-      <?php } } ?>
+      <?php } ?>
       </ul>
     </section>
     <!-- /.sidebar -->

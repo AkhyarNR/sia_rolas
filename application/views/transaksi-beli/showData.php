@@ -53,11 +53,11 @@
                         ?>
                         <td><?php echo $value['nama_user'] ?></td>
                         <td>
-                        <?php if(date("Y-m-d")==$value['tgl_pembelian']){?>
+                        <!--<?php if(date("Y-m-d")==$value['tgl_pembelian']){?>
                           <a title="Edit" class="btn btn-warning btn-sm" href="<?php echo base_url().'TransaksiBeli/edit/'.$value['id'];?>"><i class="fa fa-edit fa-unset"></i></a>
                         <?php }else{ ?>  
                           <button class='btn btn-warning btn-sm ' disabled><i class='fa fa-edit fa-unset' ></i></button>
-                        <?php } ?>
+                        <?php } ?>-->
                           <a title="Detail" class="btn btn-primary btn-sm" href="<?php echo base_url().'TransaksiBeli/detail/'.$value['id'];?>">&nbsp;<i class="fa fa-info fa-lg" ></i>&nbsp;</a>
                         </td>
                     </tr>

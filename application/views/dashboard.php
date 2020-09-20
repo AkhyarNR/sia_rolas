@@ -59,6 +59,20 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-black"><i class="ion ion-alert-circled"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text" style="margin-bottom:10px;">Obat <br>Dimusnahkan</span>
+              <span class="info-box-number"><a href="<?php echo base_url()?>ObatDimusnahkan"><u><?php echo $dimusnahkan ?></u>&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
       </div>
       <!-- /.row -->
 

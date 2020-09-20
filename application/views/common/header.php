@@ -105,6 +105,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <?php if($this->session->userdata('jabatan') == 'ADMIN' || $this->session->userdata('jabatan') == 'KEPALA APOTEK' || $this->session->userdata('jabatan') == 'PETUGAS APOTEK') {?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Data Master</span>
@@ -113,10 +114,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <?php if($this->session->userdata('jabatan') == 'ADMIN') { ?> 
               <li><a href="<?php echo base_url()?>MasterUser"><i class="fa fa-circle-o"></i> Data User</a></li>
-            <?php } ?>
-            <?php if($this->session->userdata('jabatan') != 'PETUGAS APOTEK') { ?>
+            
+            <?php if($this->session->userdata('jabatan') != 'PERAWAT') { ?>
               <li><a href="<?php echo base_url()?>MasterPasien"><i class="fa fa-circle-o"></i> Data Pasien</a></li>
             <?php } ?>
             <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
@@ -125,13 +125,14 @@
             <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
               <li><a href="<?php echo base_url()?>MasterObat"><i class="fa fa-circle-o"></i> Data Obat</a></li>
             <?php } ?>
+            <?php if($this->session->userdata('jabatan') != 'DOKTER') { ?> 
               <li><a href="<?php echo base_url()?>MasterResep"><i class="fa fa-circle-o"></i> Data Resep</a></li>
-            <?php if($this->session->userdata('jabatan') == 'ADMIN') { ?> 
+            <?php } ?>
               <li><a href="<?php echo base_url()?>Setting"><i class="fa fa-circle-o"></i> Setting Data</a></li>
             <?php } ?>
           </ul>
         </li>
-      <?php if($this->session->userdata('jabatan') != 'DOKTER') || ($this->session->userdata('jabatan') != 'PERAWAT') || ($this->session->userdata('jabatan') != 'ADMIN') || ($this->session->userdata('jabatan') != 'KEPALA KLINIK') {?> 
+      <?php if($this->session->userdata('jabatan') == 'PETUGAS APOTEK' || $this->session->userdata('jabatan') != 'KEPALA APOTEK') {?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Data Transaksi</span>

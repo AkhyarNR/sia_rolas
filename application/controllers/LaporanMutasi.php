@@ -29,23 +29,34 @@ class LaporanMutasi extends CI_Controller
         'header' => 'Laporan Mutasi',
         'sub_header' => 'List data'
       );
+      $data_tanggal = "-";
+      $data_obat = "-";
+      $data_supplier = "-";
+      $data_user = "-";
       $filter = array();
 
       if($min!=NULL && $max!=NULL){
         $filter['m.tgl_transaksi >='] = $min;
         $filter['m.tgl_transaksi <='] = $max;
+        $data_tanggal = "$min"."<b> - </b> "."$max";
       }
 
       if($obat!=NULL){
         $filter['m.id_obat'] = $obat;
+        $qry_obat = $this->Common_model->getData('*','m_obat','',['id',$obat],'')->row();
+        $data_obat = $qry_obat->nama_obat;
       }
 
       if($supplier!=NULL){
         $filter['m.id_supplier'] = $supplier;
+        $qry_supplier = $this->Common_model->getData('*','m_supplier','',['id',$supplier],'')->row();
+        $data_supplier = $qry_supplier->nama_supplier;
       }
 
       if($user!=NULL){
         $filter['m.id_user'] = $user;
+        $qry_user = $this->Common_model->getData('*','m_user','',['id',$user],'')->row();
+        $data_user = $qry_user->nama_user;
       }
 
       if($jenis!=NULL){
@@ -73,6 +84,11 @@ class LaporanMutasi extends CI_Controller
 			}elseif($this->session->flashdata('error')){
 				$data['notif_gagal'] = $this->session->flashdata('error');
 			}
+
+      $data['data_tanggal'] = $data_tanggal;
+      $data['data_obat'] = $data_obat;
+      $data['data_user'] = $data_user;
+      $data['data_supplier'] = $data_supplier;
     
     // load view 
     $this->load->view('common/header',$header);

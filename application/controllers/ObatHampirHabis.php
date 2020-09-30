@@ -22,10 +22,13 @@ class ObatHampirHabis extends CI_Controller
         'header' => 'Obat Hampir Habis',
         'sub_header' => 'List data'
       );
+
+      $settings = $this->Common_model->getData('*','m_settings','',['id'=>1],'')->row();
+
       // data for content
       $data = array(  
         // 'dataTable' => $this->Common_model->getData('id, kode_obat, nama_obat, total_qty','m_obat','',['total_qty >' => 0,'total_qty <=' => 150],['id','ASC'])->result_array()
-        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 90, 'total_qty <' => 150],['o.id'])->result_array()
+        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 90, 'total_qty <' => $settings->set_min_jumlah],['o.id'])->result_array()
       );
 
       // data for footer 
@@ -63,8 +66,10 @@ class ObatHampirHabis extends CI_Controller
         'sub_header' => 'List data'
       );
       // data for content
+      $settings = $this->Common_model->getData('*','m_settings','',['id'=>1],'')->row();
+
       $data = array(  
-        'dataTable' => $this->Common_model->getData('dob.id, dob.id_obat, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, dob.qty, dob.harga_beli','m_detail_obat dob',['m_obat o', 'dob.id_obat = o.id', 'm_supplier s', 'dob.id_supplier = s.id'],['total_qty >' => 0,'total_qty <=' => 150, 'dob.id_obat'=>$id],['dob.id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('dob.id, dob.id_obat, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, dob.qty, dob.harga_beli','m_detail_obat dob',['m_obat o', 'dob.id_obat = o.id', 'm_supplier s', 'dob.id_supplier = s.id'],['total_qty >' => 0,'total_qty <=' => $settings->set_min_jumlah, 'dob.id_obat'=>$id],['dob.id','ASC'])->result_array()
       );
 
       // data for footer 

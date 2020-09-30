@@ -22,10 +22,12 @@ class ObatHampirExp extends CI_Controller
         'header' => 'Obat Hampir Kadaluarsa',
         'sub_header' => 'List data'
       );
+
+      $settings = $this->Common_model->getData('*','m_settings','',['id'=>1],'')->row();
       // data for content
       $data = array(  
         // 'obat' => $this->Common_model->getDataDistinct('o.id, o.kode_obat, o.nama_obat, o.total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0],'')->result_array(),
-        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],['o.id'])->result_array()
+        'dataTable' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => $settings->set_min_exp_day, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],['o.id'])->result_array()
       );
 
       // data for footer 
@@ -62,9 +64,11 @@ class ObatHampirExp extends CI_Controller
         'header' => 'Detail Obat',
         'sub_header' => 'List data'
       );
+
+      $settings = $this->Common_model->getData('*','m_settings','',['id'=>1],'')->row();
       // data for content
       $data = array(  
-        'dataTable' => $this->Common_model->getData('dob.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, DATEDIFF(dob.exp_date, CURDATE()) as countdown, dob.harga_beli, dob.qty','m_detail_obat dob',['m_obat o', 'o.id = dob.id_obat', 'm_supplier s', 's.id = dob.id_supplier'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0, 'dob.id_obat' => $id],['id','ASC'])->result_array()
+        'dataTable' => $this->Common_model->getData('dob.id, o.kode_obat, o.nama_obat, s.nama_supplier, dob.batch, dob.tgl_pembelian, dob.exp_date, DATEDIFF(dob.exp_date, CURDATE()) as countdown, dob.harga_beli, dob.qty','m_detail_obat dob',['m_obat o', 'o.id = dob.id_obat', 'm_supplier s', 's.id = dob.id_supplier'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) <=' => $settings->set_min_exp_day, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0, 'dob.id_obat' => $id],['id','ASC'])->result_array()
       );
 
       // data for footer 

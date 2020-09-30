@@ -19,20 +19,33 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
+                <div class="col-md-12">
+                <table style="width:100%;"">
+                    <tr>
+                      <td><p style="font-size:12pt; text-align:left; margin-left:10px;"><b>Tanggal :</b> <?php echo $data_tanggal?></p></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>User :</b> <?php echo $data_user?></p></td>
+                    </tr>
+                    <tr>
+                      <td><p style="font-size:12pt;text-align:left; margin-left:10px;"><b>Nama Obat :</b> <?php echo $data_obat?></p></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>Supplier :</b> <?php echo $data_supplier?></p></td>
+                    </tr>
+                  </table>
+                  <hr>
+              </div>
                 <table id="example2" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Transaksi</th>
-                    <th>Obat</th>
-                    <th>Supplier</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
+                    <?php if($data_supplier == "-"){ ?><th>Supplier</th><?php }?>
                     <th>Batch</th>
                     <th>Jenis</th>
                     <th>Masuk</th>
                     <th>Keluar</th>
                     <th>Stok</th>
-                    <th>User</th>
+                    <?php if($data_user == "-"){ ?><th>User</th><?php }?>
                   </tr>
                   </thead>
                   <tbody>
@@ -61,14 +74,14 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo date_format(new DateTime($value['tgl_transaksi']), 'd-m-Y') ?></td>
-                        <td><?php echo $value['nama_obat'] ?></td>
-                        <td><?php echo $value['nama_supplier'] ?></td>
+                        <?php if($data_obat == "-"){ ?><td><?php echo $value['nama_obat'] ?></td><?php } ?>
+                        <?php if($data_supplier == "-"){ ?><td><?php echo $value['nama_supplier'] ?></td><?php }?>
                         <td><?php echo $value['batch'] ?></td>
                         <td><medium class="label label-<?php echo $color?>"><?php echo $jenis;?></medium></td>
                         <td><?php echo $value['masuk'] ?></td>
                         <td><?php echo $value['keluar'] ?></td>
                         <td><?php echo $value['stok'] ?></td>
-                        <td><?php echo $value['nama_user'] ?></td>
+                        <?php if($data_user == "-"){ ?><td><?php echo $value['nama_user'] ?></td><?php }?>
                     </tr>
                     <?php
                         $no++;
@@ -80,14 +93,14 @@
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Transaksi</th>
-                    <th>Obat</th>
-                    <th>Supplier</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
+                    <?php if($data_supplier == "-"){ ?><th>Supplier</th><?php }?>
                     <th>Batch</th>
                     <th>Jenis</th>
                     <th>Masuk</th>
                     <th>Keluar</th>
                     <th>Stok</th>
-                    <th>User</th>
+                    <?php if($data_user == "-"){ ?><th>User</th><?php }?>
                   </tr>
                   </tfoot>
                 </table>

@@ -19,23 +19,38 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
+                <div class="col-md-12">
+                <table style="width:100%;"">
+                    <tr>
+                      <td><p style="font-size:12pt; text-align:left; margin-left:10px;"><b>Tanggal :</b> <?php echo $data_tanggal?></p></td>
+                      <td></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>User :</b> <?php echo $data_user?></p></td>
+                    </tr>
+                    <tr>
+                      <td><p style="font-size:12pt;text-align:left; margin-left:10px;"><b>Nama Obat :</b> <?php echo $data_obat?></p></td>
+                       <td><p style="font-size:12pt; text-align:center; margin-right:10px;"><b>Keterangan :</b> <?php echo $data_keterangan?></p></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>Supplier :</b> <?php echo $data_supplier?></p></td>
+                    </tr>
+                  </table>
+                  <hr>
+              </div>
                 <table id="example2" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Retur</th>
-                    <th>Nama Obat</th>
-                    <th>Supplier</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
+                    <?php if($data_supplier == "-"){ ?><th>Supplier</th><?php }?>
                     <th>Batch</th>
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
                     <th>Subtotal</th>
-                    <th>Keterangan</th>
+                    <?php if($data_keterangan == "-"){ ?><th>Keterangan</th><?php }?>
                     <th>Batch Baru</th>
                     <th>Exp Baru</th>
-                    <th>User</th>
+                    <?php if($data_user == "-"){ ?><th>User</th><?php }?>
                   </tr>
                   </thead>
                   <tbody>
@@ -47,17 +62,17 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo date_format(new DateTime($value['tgl_retur']), 'd-m-Y') ?></td>
-                        <td><?php echo $value['nama_obat'] ?></td>
-                        <td><?php echo $value['nama_supplier'] ?></td>
+                        <?php if($data_obat == "-"){ ?><td><?php echo $value['nama_obat'] ?></td><?php } ?>
+                        <?php if($data_supplier == "-"){ ?><td><?php echo $value['nama_supplier'] ?></td><?php }?>
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo $value['exp_date'] ?></td>
                         <td><?php echo number_format($value['qty']) ?></td>
                         <td><?php echo number_format($value['harga']) ?></td>
                         <td><?php echo number_format($value['sub_total']) ?></td>
-                        <td><?php echo $value['keterangan'] ?></td>
+                        <?php if($data_keterangan == "-"){ ?><td><?php echo $value['keterangan'] ?></td><?php }?>
                         <td><?php echo $value['batch_baru'] ?></td>
                         <td><?php echo $value['exp_date_baru'] ?></td>
-                        <td><?php echo $value['nama_user'] ?></td>
+                        <?php if($data_user == "-"){ ?><td><?php echo $value['nama_user'] ?></td><?php }?>
                     </tr>
                     <?php
                         $no++;
@@ -69,17 +84,17 @@
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Retur</th>
-                    <th>Nama Obat</th>
-                    <th>Supplier</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
+                    <?php if($data_supplier == "-"){ ?><th>Supplier</th><?php }?>
                     <th>Batch</th>
                     <th>Exp Date</th>
                     <th>Quantity</th>
                     <th>Harga</th>
                     <th>Subtotal</th>
-                    <th>Keterangan</th>
+                    <?php if($data_keterangan == "-"){ ?><th>Keterangan</th><?php }?>
                     <th>Batch Baru</th>
                     <th>Exp Baru</th>
-                    <th>User</th>
+                    <?php if($data_user == "-"){ ?><th>User</th><?php }?>
                   </tr>
                   </tfoot>
                 </table>

@@ -82,8 +82,8 @@ class LaporanBeli extends CI_Controller
 
       $data['data_tanggal'] = $data_tanggal;
       $data['data_obat'] = $data_obat;
-      $data['data_user'] = $data_supplier;
-      $data['data_supplier'] = $data_user;
+      $data['data_user'] = $data_user;
+      $data['data_supplier'] = $data_supplier;
     
     // load view 
     $this->load->view('common/header',$header);

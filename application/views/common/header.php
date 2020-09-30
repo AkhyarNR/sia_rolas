@@ -114,18 +114,24 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <?php if($this->session->userdata('jabatan') == 'ADMIN') {?>
+            <?php if($this->session->userdata('jabatan') == 'ADMIN' || $this->session->userdata('jabatan') == 'KEPALA APOTEK') {?>
               <li><a href="<?php echo base_url()?>MasterUser"><i class="fa fa-circle-o"></i> Data User</a></li>
             <?php }?>
+            <?php if($this->session->userdata('jabatan') != 'DOKTER') {?>
               <li><a href="<?php echo base_url()?>MasterPasien"><i class="fa fa-circle-o"></i> Data Pasien</a></li>
+              <?php }?>
               <li><a href="<?php echo base_url()?>MasterSupplier"><i class="fa fa-circle-o"></i> Data Supplier</a></li>
               <li><a href="<?php echo base_url()?>MasterObat"><i class="fa fa-circle-o"></i> Data Obat</a></li>
+              <?php if($this->session->userdata('jabatan') != 'PERAWAT') {?>
               <li><a href="<?php echo base_url()?>MasterResep"><i class="fa fa-circle-o"></i> Data Resep</a></li>
+              <?php }?>
+              <?php if($this->session->userdata('jabatan') == 'ADMIN') {?>
               <li><a href="<?php echo base_url()?>MasterSettings"><i class="fa fa-circle-o"></i> Settings</a></li>
+              <?php }?>
           </ul>
         </li>
         <?php } ?>
-      <?php if($this->session->userdata('jabatan') != 'KEPALA APOTEK') {?> 
+      <?php if($this->session->userdata('jabatan') == 'KEPALA APOTEK' || $this->session->userdata('jabatan') == 'PETUGAS APOTEK') {?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Data Transaksi</span>
@@ -140,7 +146,7 @@
           </ul>
         </li>
       <?php } ?>
-      <?php if($this->session->userdata('jabatan') != 'KEPALA APOTEK') {?>
+      <?php if($this->session->userdata('jabatan') == 'KEPALA APOTEK' || $this->session->userdata('jabatan') == 'ADMIN' || $this->session->userdata('jabatan') == 'PETUGAS APOTEK') {?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span> Ketersediaan Obat</span>

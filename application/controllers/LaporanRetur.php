@@ -29,27 +29,41 @@ class LaporanRetur extends CI_Controller
         'header' => 'Laporan Retur',
         'sub_header' => 'List data'
       );
+
+      $data_tanggal = "-";
+      $data_obat = "-";
+      $data_supplier = "-";
+      $data_user = "-";
+      $data_keterangan = "-";
       $filter = array();
 
       if($min!=NULL && $max!=NULL){
         $filter['r.tgl_retur >='] = $min;
         $filter['r.tgl_retur <='] = $max;
+        $data_tanggal = "$min"."<b> - </b> "."$max";
       }
 
       if($obat!=NULL){
         $filter['dob.id_obat'] = $obat;
+        $qry_obat = $this->Common_model->getData('*','m_obat','',['id',$obat],'')->row();
+        $data_obat = $qry_obat->nama_obat;
       }
 
       if($supplier!=NULL){
         $filter['drm.id_supplier'] = $supplier;
+        $qry_supplier = $this->Common_model->getData('*','m_supplier','',['id',$supplier],'')->row();
+        $data_supplier = $qry_supplier->nama_supplier;
       }
 
       if($keterangan!=NULL){
         $filter['drk.keterangan'] = $keterangan;
+        $data_keterangan = $keterangan;
       }
 
       if($user!=NULL){
         $filter['r.id_user'] = $user;
+        $qry_user = $this->Common_model->getData('*','m_user','',['id',$user],'')->row();
+        $data_user = $qry_user->nama_user;
       }
 
         $data = array(  
@@ -73,6 +87,12 @@ class LaporanRetur extends CI_Controller
 			}elseif($this->session->flashdata('error')){
 				$data['notif_gagal'] = $this->session->flashdata('error');
 			}
+
+      $data['data_tanggal'] = $data_tanggal;
+      $data['data_obat'] = $data_obat;
+      $data['data_user'] = $data_user;
+      $data['data_supplier'] = $data_supplier;
+      $data['data_keterangan'] = $data_keterangan;
     
     // load view 
     $this->load->view('common/header',$header);

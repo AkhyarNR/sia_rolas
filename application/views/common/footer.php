@@ -28,7 +28,7 @@
 <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() ?>assets/js/app.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/print_button.js"></script>
+<!-- <script src="<?php echo base_url() ?>assets/js/print_button.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="<?php echo base_url() ?>assets/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->

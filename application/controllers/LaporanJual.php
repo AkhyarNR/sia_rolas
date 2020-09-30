@@ -29,26 +29,39 @@ class LaporanJual extends CI_Controller
         'sub_header' => 'List data'
       );
 
+      $data_tanggal = "-";
+      $data_obat = "-";
+      $data_resep = "-";
+      $data_user = "-";
+
       $filter = array();
 
       if($min!=NULL && $max!=NULL){
         $filter['j.tgl_penjualan >='] = $min;
         $filter['j.tgl_penjualan <='] = $max;
+        $data_tanggal = "$min"."<b> - </b> "."$max";
       }
 
       if($obat!=NULL){
         $filter['dob.id_obat'] = $obat;
+        $qry_obat = $this->Common_model->getData('*','m_obat','',['id',$obat],'')->row();
+        $data_obat = $qry_obat->nama_obat;
       }
 
       if($resep!=NULL){
-        if($resep==1)
+        if($resep==1){
           $filter['r.no_resep !='] = NULL;
-        else
+          $data_resep = "Resep";
+        }else{
           $filter['r.no_resep'] = NULL;
+          $data_resep = "Non Resep";
+        }
       }
 
       if($user!=NULL){
         $filter['j.id_user'] = $user;
+        $qry_user = $this->Common_model->getData('*','m_user','',['id',$user],'')->row();
+        $data_user = $qry_user->nama_user;
       }
 
         $data = array(  
@@ -60,6 +73,11 @@ class LaporanJual extends CI_Controller
           'dataTable' => $this->Common_model->getJualLeft($filter)
         );
        
+        $data['data_tanggal'] = $data_tanggal;
+        $data['data_obat'] = $data_obat;
+        $data['data_user'] = $data_user;
+        $data['data_resep'] = $data_resep;
+    
 
       // data for footer 
       $footer = array(

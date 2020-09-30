@@ -15,7 +15,10 @@ $(function () {
                 },
               customize: function ( win ) {
                   $(win.document.body)
-                      .css( 'font-size', '10pt' );
+                      .css( 'font-size', '10pt' )
+                      .prepend(
+                            '<img src="http://localhost/sia_rolas/assets/img/qw.png" style="width: 15%; align:right; height:auto; margin:10px" />'
+                        );
 
                   $(win.document.body).find( 'table' )
                       .addClass( 'compact' )

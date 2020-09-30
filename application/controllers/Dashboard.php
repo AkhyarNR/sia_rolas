@@ -20,11 +20,12 @@ class Dashboard extends CI_Controller
       'header' => 'Dashboard',
     );
 
+  $settings = $this->Common_model->getData('*','m_settings','',['id'=>1],'')->row();
     $data = array(  
       'tersedia' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 90],['o.id'])->num_rows(),
-      'hampir_habis' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 90, 'total_qty <' => 200],['o.id'])->num_rows(),
+      'hampir_habis' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob', 'dob.id_obat = o.id'],['dob.qty >' => 0, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 90, 'total_qty <' => $settings->set_min_jumlah],['o.id'])->num_rows(),
       'kosong' => $this->Common_model->getData('*','m_obat','',['total_qty' => 0],'')->num_rows(),
-      'hampir_kadaluarsa' => $this->Common_model->getDataDistinct('o.id','m_obat o',['m_detail_obat dob','dob.id_obat=o.id'],['dob.qty >' => 0,'DATEDIFF(dob.exp_date, CURDATE()) <=' => 120, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],'')->num_rows(),
+      'hampir_kadaluarsa' => $this->Common_model->getDataDistinct('o.id','m_obat o',['m_detail_obat dob','dob.id_obat=o.id'],['dob.qty >' => 0,'DATEDIFF(dob.exp_date, CURDATE()) <=' => $settings->set_min_exp_day, 'DATEDIFF(dob.exp_date, CURDATE()) >' => 0],'')->num_rows(),
       'dimusnahkan' => $this->Common_model->getDataGroup('o.id, o.kode_obat, o.nama_obat, SUM(dob.qty) as total_qty','m_obat o',['m_detail_obat dob','dob.id_obat = o.id'],['dob.exp_date <' => date("Y-m-d")],['o.id'])->num_rows()
     );
 

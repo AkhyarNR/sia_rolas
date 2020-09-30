@@ -19,13 +19,27 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
+                <div class="col-md-12">
+                <table style="width:100%;"">
+                    <tr>
+                      <td><p style="font-size:12pt; text-align:left; margin-left:10px;"><b>Tanggal :</b> <?php echo $data_tanggal?></p></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>User :</b> <?php echo $data_user?></p></td>
+                    </tr>
+                    <tr>
+                      <td><p style="font-size:12pt;text-align:left; margin-left:10px;"><b>Nama Obat :</b> <?php echo $data_obat?></p></td>
+                      <td><p style="font-size:12pt; text-align:right; margin-right:10px;"><b>Supplier :</b> <?php echo $data_supplier?></p></td>
+                    </tr>
+                  </table>
+                  <hr>
+              </div>
+              
                 <table id="example2" class="display responsive nowrap" style="width:100%">
                   <thead>
                   <tr>
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Nama Obat</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
                     <th>Supplier</th>
                     <th>Batch</th>
                     <th>Exp Date</th>
@@ -44,7 +58,7 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value['no_transaksi'] ?></td>
                         <td><?php echo date_format(new DateTime($value['tgl_pembelian']), 'd-m-Y') ?></td>
-                        <td><?php echo $value['nama_obat'] ?></td>
+                        <?php if($data_obat == "-"){ ?><td><?php echo $value['nama_obat'] ?></td><?php } ?>
                         <td><?php echo $value['nama_supplier'] ?></td>
                         <td><?php echo $value['batch'] ?></td>
                         <td><?php echo $value['exp_date'] ?></td>
@@ -63,7 +77,7 @@
                     <th>No</th>
                     <th>No Transaksi</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Nama Obat</th>
+                    <?php if($data_obat == "-"){ ?><th>Nama Obat</th><?php }?>
                     <th>Supplier</th>
                     <th>Batch</th>
                     <th>Exp Date</th>

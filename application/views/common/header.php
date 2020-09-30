@@ -105,7 +105,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <?php if($this->session->userdata('jabatan') == 'ADMIN' && $this->session->userdata('jabatan') == 'KEPALA APOTEK' && $this->session->userdata('jabatan') == 'PETUGAS APOTEK') {?>
+        <?php if($this->session->userdata('jabatan') == 'ADMIN' && $this->session->userdata('jabatan') == 'KEPALA APOTEK') {?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Data Master</span>
@@ -167,7 +167,7 @@
           </ul>
         </li>
       <?php } ?>
-      <?php if($this->session->userdata('jabatan') != 'PETUGAS APOTEK' && $this->session->userdata('jabatan') != 'DOKTER' && $this->session->userdata('jabatan') != 'PERAWAT') { ?> 
+      <?php if($this->session->userdata('jabatan') == 'KEPALA APOTEK') { ?> 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-book"></i> <span>Laporan</span>
